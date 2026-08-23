@@ -15,7 +15,7 @@
   --body: "Newsreader", Georgia, "Times New Roman", serif;
   --utility: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --nav-height: 3.5rem;
+  --nav-height: 3.75rem;
   --gutter: 1.5rem;
 }
 
@@ -39,7 +39,7 @@ body {
   font-family: var(--body);
   font-size: 0.875rem;
   line-height: 1.7;
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + 0.45rem);
   overflow-x: hidden;
   text-align: center;
 }
@@ -106,8 +106,8 @@ a:hover {
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
-  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
-  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 /* --------------------------------------------------------------------------
@@ -133,8 +133,7 @@ a:hover {
   min-height: var(--nav-height);
   max-width: 58rem;
   margin: 0 auto;
-  padding: 0.35rem max(var(--gutter), env(safe-area-inset-left, 0px));
-  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  padding: 0.35rem var(--gutter);
 }
 
 .site-nav a {
@@ -233,7 +232,8 @@ a:hover {
 
 .masthead {
   text-align: center;
-  padding: 2.6rem 0 2rem;
+  padding-top: 2.6rem;
+  padding-bottom: 2rem;
 }
 
 .masthead__folio {
@@ -251,14 +251,15 @@ a:hover {
 
 .masthead__brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  margin: 0 auto 0.1rem;
+  gap: 0.7rem;
+  margin: 0 auto 0.15rem;
 }
 
 .masthead__emblem {
-  width: 2.5rem;
+  width: 3.1rem;
   height: auto;
   flex-shrink: 0;
   margin: 0;
@@ -270,7 +271,7 @@ a:hover {
   letter-spacing: -0.02em;
   line-height: 1.08;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .rules {
@@ -354,7 +355,8 @@ a:hover {
 .columns {
   display: grid;
   gap: 0;
-  padding: 0.75rem 0 4.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 4.5rem;
   text-align: center;
   border-top: 1px solid var(--ink);
 }
@@ -535,7 +537,8 @@ a:hover {
 
 .page-head {
   text-align: center;
-  padding: 2.6rem 0 2rem;
+  padding-top: 2.6rem;
+  padding-bottom: 2rem;
 }
 
 .page-head h1 {
@@ -558,7 +561,8 @@ a:hover {
 }
 
 .article {
-  padding: 0.75rem 0 4.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 4.5rem;
   text-align: center;
 }
 
@@ -660,7 +664,8 @@ a:hover {
 }
 
 .latest {
-  padding: 0.5rem 0 2.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
 }
 
@@ -753,7 +758,8 @@ a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .thanks p {
@@ -800,16 +806,6 @@ a:hover {
   color: var(--ink);
 }
 
-@media (max-width: 799px) {
-  .page-head.wrap,
-  .article.wrap,
-  .latest.wrap,
-  main > .wrap {
-    padding-left: max(1.85rem, env(safe-area-inset-left, 0px));
-    padding-right: max(1.85rem, env(safe-area-inset-right, 0px));
-  }
-}
-
 /* --------------------------------------------------------------------------
    Desktop
    -------------------------------------------------------------------------- */
@@ -837,8 +833,8 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
-    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
   }
 
   .site-nav__bar {
@@ -867,11 +863,18 @@ a:hover {
   }
 
   .masthead {
-    padding: 3.25rem 0 2.15rem;
+    padding-top: 3.25rem;
+    padding-bottom: 2.15rem;
+  }
+
+  .masthead__brand {
+    flex-direction: row;
+    gap: 0.75rem;
   }
 
   .masthead__name {
     font-size: 2.85rem;
+    text-align: left;
   }
 
   .masthead__emblem {
@@ -906,7 +909,8 @@ a:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     text-align: center;
-    padding: 0.5rem 0 3.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 3.25rem;
   }
 
   .column {
@@ -965,7 +969,8 @@ a:hover {
   }
 
   .page-head {
-    padding: 3.25rem 0 2.15rem;
+    padding-top: 3.25rem;
+    padding-bottom: 2.15rem;
   }
 
   .page-head h1 {
