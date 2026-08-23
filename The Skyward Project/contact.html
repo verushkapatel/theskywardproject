@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — The Skyward Project</title>
+<meta name="description" content="Write to The Skyward Project about partnerships, pilot sites, media, or writing for Dispatches.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="has-fixed-nav">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav" data-nav aria-label="Primary">
+  <div class="site-nav__inner">
+    <a class="site-nav__home" href="index.html" aria-label="The Skyward Project, home">
+      <img class="site-nav__emblem" src="assets/skyward-emblem.png" alt="The Skyward Project emblem" width="452" height="459">
+    </a>
+    <ul class="site-nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mission.html">The Mission</a></li>
+      <li><a href="finlit-index.html">The FinLit Index</a></li>
+      <li><a href="dispatches.html">Dispatches</a></li>
+      <li><a href="field-notes.html">Field Notes</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Write to us. We read everything.</h1>
+    </div>
+  </header>
+
+  <div class="wrap"><div class="rule--double"></div></div>
+
+  <div class="wrap">
+    <form class="form" action="https://api.web3forms.com/submit" method="POST" data-contact-form>
+
+      <!-- REPLACE the value below with your Web3Forms access key. Get one free at web3forms.com by entering the email you want messages sent to. -->
+      <input type="hidden" name="access_key" value="d38558e6-c576-4688-b65d-367953ec1fc9">
+
+      <input type="hidden" name="subject" value="New message from Skyward Project website">
+      <input type="hidden" name="from_name" value="The Skyward Project website">
+
+      <!-- Spam trap. Leave this alone; real people never see it. -->
+      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" aria-hidden="true">
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="field">
+        <label for="organisation">Organisation <span class="optional">(optional)</span></label>
+        <input type="text" id="organisation" name="organisation" autocomplete="organization">
+      </div>
+
+      <div class="field">
+        <label for="enquiry_type">Subject</label>
+        <select id="enquiry_type" name="enquiry_type" required>
+          <option value="General enquiry">General enquiry</option>
+          <option value="Partnership or pilot site">Partnership or pilot site</option>
+          <option value="Media">Media</option>
+          <option value="Write for Dispatches">Write for Dispatches</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="8" required></textarea>
+      </div>
+
+      <button class="button" type="submit">
+        Send
+        <svg width="22" height="8" viewBox="0 0 22 8" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 4h20.5"/><path d="M17 0.75 20.75 4 17 7.25"/></svg>
+      </button>
+
+      <p class="form__status" data-form-status role="status" aria-live="polite"></p>
+
+    </form>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__row">
+    <p>The Skyward Project &middot; Pune &amp; Mumbai &middot; Under construction</p>
+    <a class="footer__contact" href="contact.html">
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" stroke="currentColor" aria-hidden="true"><rect x="0.5" y="0.5" width="14" height="10"/><path d="M0.5 0.5 7.5 6.5 14.5 0.5"/></svg>
+      Contact
+    </a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
