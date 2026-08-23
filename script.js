@@ -74,6 +74,32 @@
     });
   }
 
+  document.documentElement.classList.add("js-ready");
+
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reveals = document.querySelectorAll("[data-reveal]");
+  if (reveals.length) {
+    if (motionQuery.matches || !("IntersectionObserver" in window)) {
+      reveals.forEach(function (el) {
+        el.classList.add("is-in");
+      });
+    } else {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
+      );
+      reveals.forEach(function (el) {
+        observer.observe(el);
+      });
+    }
+  }
+
   var form = document.querySelector("[data-contact-form]");
   if (!form) return;
 
