@@ -20,6 +20,60 @@
     });
   }
 
+  var layer = document.querySelector("[data-bio-layer]");
+  if (layer) {
+    var card = layer.querySelector(".bio-card");
+    var titleEl = layer.querySelector("#bio-title");
+    var roleEl = layer.querySelector("[data-bio-role]");
+    var photoEl = layer.querySelector(".bio-card__photo");
+    var copyEl = layer.querySelector(".bio-card__copy");
+    var lastFocus = null;
+
+    var closeBio = function () {
+      layer.hidden = true;
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    };
+
+    var openBio = function (member, trigger) {
+      var name = member.querySelector("h3");
+      var role = member.querySelector(".member__role");
+      var bio = member.querySelector(".member__bio");
+      var img = member.querySelector("img");
+      titleEl.textContent = name ? name.textContent : "";
+      roleEl.textContent = role ? role.textContent : "";
+      copyEl.innerHTML = bio ? bio.innerHTML : "";
+      photoEl.innerHTML = "";
+      if (img) {
+        var clone = img.cloneNode(true);
+        clone.removeAttribute("width");
+        clone.removeAttribute("height");
+        photoEl.appendChild(clone);
+      }
+      lastFocus = trigger;
+      layer.hidden = false;
+      document.body.style.overflow = "hidden";
+      card.focus();
+    };
+
+    document.querySelectorAll("[data-open-bio]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var member = btn.closest(".member");
+        if (member) openBio(member, btn);
+      });
+    });
+
+    layer.addEventListener("click", function (event) {
+      if (event.target === layer || event.target.hasAttribute("data-bio-close")) {
+        closeBio();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !layer.hidden) closeBio();
+    });
+  }
+
   var form = document.querySelector("[data-contact-form]");
   if (!form) return;
 

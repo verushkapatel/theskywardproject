@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -39,43 +39,50 @@ document.addEventListener("error", function (event) {
     </button>
   </div>
   <ul class="site-nav__list" id="menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html" aria-current="page">Mission</a></li>
-      <li><a href="finlit-index.html">FinLit Index</a></li>
-      <li><a href="dispatches.html">Dispatches</a></li>
-      <li><a href="field-notes.html">Field Notes</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mission.html" aria-current="page">Mission</a></li>
+    <li><a href="finlit-index.html">FinLit Index</a></li>
+    <li><a href="dispatches.html">Dispatches</a></li>
+    <li><a href="field-notes.html">Field Notes</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<main id="main">
+<main id="main" class="wash">
+  <div class="wash__art" aria-hidden="true">
+    <img src="assets/plate-classroom.jpg" alt="" width="1536" height="1024" loading="lazy">
+  </div>
+
   <header class="page-head wrap">
     <p class="kicker">The Mission</p>
     <h1>Money skills are the part schools can actually do something about.</h1>
   </header>
+
   <article class="article wrap">
     <section>
-      <p class="lede">The Skyward Project is a youth-led research and policy effort on fairness in education, real money skills, and how ready students are for life after school.</p>
+      <p class="lede">The Skyward Project is a youth-led research and policy effort. It is about three things: fairness in education, real money skills, and how ready students are for life after school.</p>
     </section>
     <section>
-      <p class="kicker">The question</p>
-      <p>Among high-school students in Pune and Mumbai, how does financial literacy differ from one school board to another, and from one income group to another?</p>
+      <p class="kicker">The research question</p>
+      <p>Among high-school students in Pune and Mumbai, how does financial literacy differ from one school board to another, and from one income group to another? And what do those differences tell us about who gets a real financial education and who does not?</p>
     </section>
     <section>
       <p class="kicker">Why it matters</p>
-      <p>Everyone has to save, borrow, use UPI, spot a scam, and plan ahead — often long before anyone explains how it works. Just 27% of Indian adults are financially literate, against 52% in advanced economies.</p>
+      <p>Everyone has to save, borrow, use UPI, spot a scam, and plan ahead — and most people have to do all of it long before anyone explains how it works.</p>
+      <p>Just 27% of Indian adults are financially literate, against 52% in advanced economies. The World Economic Forum found that 51% of Indians struggle to keep up with their debts, compared with a global average of 32%.</p>
     </section>
     <div class="pull-quote">
       <p>Knowing how to send money is not the same as understanding debt, inflation, or interest.</p>
     </div>
     <section>
       <p class="kicker">No school is the default</p>
-      <p>Government, municipal, aided, low-fee private, mainstream private and vernacular-medium schools are each treated as their own group. Results are reported group by group, not blended into one average.</p>
+      <p>Government, municipal, aided, low-fee private, mainstream private and vernacular-medium schools are each treated as their own group, with their own recruitment target. Results are reported group by group rather than blended into one average.</p>
+      <p>An unbalanced sample would only echo the experience of already advantaged schools, and miss the inequality the study exists to find.</p>
     </section>
     <section>
-      <p class="kicker">What we need</p>
-      <p>A first pilot of about three schools across different boards in Pune and Mumbai, and guidance on research ethics for minors.</p>
-      <p class="footnote">If you can help, <a href="contact.html">write to us</a>.</p>
+      <p class="kicker">What we are asking for</p>
+      <p>Introductions to faculty advisors and education researchers in Pune and Mumbai. Links to NGO partners in school education. A first pilot of about three schools across different boards. Guidance on research ethics and handling data for minors.</p>
+      <p class="footnote">If you can help with any of these, <a href="contact.html">write to us</a>.</p>
     </section>
   </article>
 </main>
@@ -87,6 +94,6 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>
