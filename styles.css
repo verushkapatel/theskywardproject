@@ -106,6 +106,8 @@ a:hover {
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
   padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
   padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
 }
@@ -231,7 +233,7 @@ a:hover {
 
 .masthead {
   text-align: center;
-  padding: 2.15rem 0 0.5rem;
+  padding: 2.6rem 0 1.85rem;
 }
 
 .masthead__folio {
@@ -250,7 +252,7 @@ a:hover {
 .masthead__name {
   font-weight: 900;
   font-size: clamp(1.32rem, 6vw, 2.55rem);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   line-height: 1.08;
   margin: 0;
 }
@@ -276,10 +278,10 @@ a:hover {
   font-style: italic;
   font-weight: 400;
   font-size: clamp(0.88rem, 3.2vw, 1.05rem);
-  line-height: 1.55;
+  line-height: 1.7;
   color: var(--ink);
-  max-width: 22rem;
-  margin: 0 auto 1.5rem;
+  max-width: none;
+  margin: 0 auto 1.75rem;
 }
 
 .button {
@@ -336,24 +338,30 @@ a:hover {
 .columns {
   display: grid;
   gap: 0;
-  padding: 0.5rem 0 2.35rem;
+  padding: 0.15rem 0 3.5rem;
   text-align: center;
-  border-top: 1px solid var(--ink);
 }
 
 .column {
   text-align: center;
-  padding: 1.75rem 0.25rem;
-  border-top: 1px solid var(--rule);
+  padding: 2.15rem 0;
+  border-top: 1px solid var(--ink);
 }
 
 .column:first-child {
   border-top: 0;
 }
 
+.column .kicker {
+  display: inline-block;
+  padding: 0 0 0.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--ink);
+}
+
 .column p {
   font-size: 0.86rem;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
 .column p:last-child {
@@ -362,7 +370,7 @@ a:hover {
 
 .team-block {
   background: var(--paper);
-  padding: 0.35rem 0 3.25rem;
+  padding: 0.5rem 0 4.25rem;
   text-align: center;
 }
 
@@ -371,15 +379,15 @@ a:hover {
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.01em;
-  padding: 0.65rem 0;
-  margin: 0 0 1.35rem;
+  padding: 0.7rem 0;
+  margin: 0 0 1.6rem;
   border-top: 3px solid var(--ink);
   border-bottom: 1px solid var(--ink);
 }
 
 .team {
   display: grid;
-  gap: 2.75rem;
+  gap: 3.15rem;
 }
 
 .team-hint {
@@ -523,7 +531,7 @@ a:hover {
 .page-head h1 {
   font-size: clamp(1.12rem, 4.6vw, 1.65rem);
   font-weight: 700;
-  max-width: 22rem;
+  max-width: none;
   margin: 0 auto 1.15rem;
 }
 
@@ -782,16 +790,6 @@ a:hover {
   color: var(--ink);
 }
 
-@media (max-width: 799px) {
-  .page-head.wrap,
-  .article.wrap,
-  .latest.wrap,
-  main > .wrap {
-    padding-left: max(1.85rem, env(safe-area-inset-left, 0px));
-    padding-right: max(1.85rem, env(safe-area-inset-right, 0px));
-  }
-}
-
 /* --------------------------------------------------------------------------
    Desktop
    -------------------------------------------------------------------------- */
@@ -849,7 +847,7 @@ a:hover {
   }
 
   .masthead {
-    padding: 3rem 0 0.75rem;
+    padding: 3.15rem 0 2.15rem;
   }
 
   .masthead__name {
@@ -857,8 +855,7 @@ a:hover {
   }
 
   .masthead__deck {
-    max-width: 28rem;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.85rem;
   }
 
   .team {
@@ -875,11 +872,11 @@ a:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     text-align: center;
-    padding: 0.5rem 0 3.25rem;
+    padding: 0.35rem 0 3.75rem;
   }
 
   .column {
-    padding: 1.6rem 1.2rem;
+    padding: 2rem 1.2rem;
     border-top: 0;
     border-left: 1px solid var(--ink);
   }
@@ -926,19 +923,8 @@ a:hover {
     padding: 1.75rem 1.75rem 2rem;
   }
 
-  .article,
-  .form {
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .page-head {
     padding: 3.25rem 0 2.15rem;
-  }
-
-  .page-head h1 {
-    max-width: 28rem;
   }
 
   .footer__row {
