@@ -250,6 +250,36 @@ a:hover {
   border-bottom: 1px solid var(--ink);
 }
 
+.masthead__record {
+  font-family: var(--utility);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.85rem;
+}
+
+.masthead__roles {
+  font-family: var(--utility);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--quiet);
+  margin: 0.35rem 0 0;
+}
+
+.masthead__lead {
+  font-family: var(--utility);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.7rem;
+}
+
 .masthead__brand {
   display: flex;
   flex-direction: column;
@@ -380,6 +410,102 @@ a:hover {
 
 .column p:last-child {
   margin: 0;
+}
+
+.ledger {
+  padding-top: 0.25rem;
+  padding-bottom: 2.75rem;
+  text-align: center;
+}
+
+.ledger .kicker {
+  margin-bottom: 1.1rem;
+}
+
+.ledger__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.ledger__item {
+  padding: 1.15rem 0.4rem 1.05rem;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.ledger__item strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+.ledger__item span {
+  font-family: var(--utility);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.issue {
+  padding-top: 0.15rem;
+  padding-bottom: 3.25rem;
+  text-align: center;
+}
+
+.issue .kicker {
+  margin-bottom: 0.35rem;
+}
+
+.issue__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.issue__list li {
+  margin: 0;
+}
+
+.issue__list a {
+  display: block;
+  border: 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.issue__list li:last-child a {
+  border-bottom: 1px solid var(--rule);
+}
+
+.issue__title {
+  display: block;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.issue__leaders {
+  display: none;
+}
+
+.issue__page {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--utility);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--quiet);
 }
 
 .team-block {
@@ -551,6 +677,16 @@ a:hover {
   text-align: center;
   padding-top: 2.6rem;
   padding-bottom: 2rem;
+}
+
+.page-folio {
+  font-family: var(--utility);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--quiet);
+  margin: 0 0 0.85rem;
 }
 
 .page-head h1 {
@@ -1054,6 +1190,77 @@ a:hover {
   .footer__row {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .ledger__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ledger__item {
+    padding-top: 1.45rem;
+    padding-bottom: 1.35rem;
+  }
+
+  .ledger__item strong {
+    font-size: 2.2rem;
+  }
+
+  .issue__list {
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+
+  .issue__list a {
+    display: flex;
+    align-items: baseline;
+    text-align: left;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .issue__list a:hover .issue__title {
+    color: var(--accent);
+  }
+
+  .issue__title {
+    flex-shrink: 0;
+    font-size: 1.05rem;
+  }
+
+  .issue__leaders {
+    display: block;
+    flex: 1 1 auto;
+    border-bottom: 1px dotted var(--ink);
+    margin: 0 0.75rem 0.28rem;
+    min-width: 1.5rem;
+    height: 0;
+  }
+
+  .issue__page {
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .article .kicker::before {
+    content: "§ ";
+    font-family: var(--utility);
+    font-style: normal;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .pull-quote {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .pull-quote p {
+    font-size: 1.35rem;
+    line-height: 1.45;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

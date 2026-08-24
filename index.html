@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -54,11 +54,14 @@ document.addEventListener("error", function (event) {
   <section class="opening">
     <header class="masthead wrap" data-reveal>
       <p class="masthead__folio"><span>Vol. I</span><span class="masthead__dot" aria-hidden="true"> · </span><span>Pune &amp; Mumbai</span><span class="masthead__dot" aria-hidden="true"> · </span><span>2026</span></p>
+      <p class="masthead__record">A Record from the Field</p>
       <div class="masthead__brand">
         <img class="masthead__emblem" src="assets/skyward-emblem.png" alt="" width="452" height="459">
         <h1 class="masthead__name">The Skyward Project</h1>
       </div>
+      <p class="masthead__roles">Youth-led research · Educational equity · Financial literacy</p>
       <span class="rules" aria-hidden="true"></span>
+      <p class="masthead__lead">Lead Story</p>
       <p class="masthead__deck">Financial literacy should not be a privilege tied to school type, family background, or academic stream.</p>
       <a class="button" href="mission.html">The Mission</a>
     </header>
@@ -77,6 +80,62 @@ document.addEventListener("error", function (event) {
       </div>
     </div>
   </section>
+
+  <section class="ledger wrap" data-reveal>
+    <p class="kicker">By the measure</p>
+    <div class="ledger__grid">
+      <div class="ledger__item">
+        <strong>30</strong>
+        <span>Minutes</span>
+      </div>
+      <div class="ledger__item">
+        <strong>25</strong>
+        <span>Marks</span>
+      </div>
+      <div class="ledger__item">
+        <strong>9–12</strong>
+        <span>Grades</span>
+      </div>
+      <div class="ledger__item">
+        <strong>2</strong>
+        <span>Cities</span>
+      </div>
+    </div>
+  </section>
+
+  <nav class="issue wrap" data-reveal aria-label="In this issue">
+    <p class="kicker">In this issue</p>
+    <ol class="issue__list">
+      <li>
+        <a href="mission.html">
+          <span class="issue__title">The Mission</span>
+          <span class="issue__leaders" aria-hidden="true"></span>
+          <span class="issue__page">p.02</span>
+        </a>
+      </li>
+      <li>
+        <a href="finlit-index.html">
+          <span class="issue__title">The FinLit Index</span>
+          <span class="issue__leaders" aria-hidden="true"></span>
+          <span class="issue__page">p.04</span>
+        </a>
+      </li>
+      <li>
+        <a href="dispatches.html">
+          <span class="issue__title">Dispatches</span>
+          <span class="issue__leaders" aria-hidden="true"></span>
+          <span class="issue__page">p.06</span>
+        </a>
+      </li>
+      <li>
+        <a href="field-notes.html">
+          <span class="issue__title">Field Notes</span>
+          <span class="issue__leaders" aria-hidden="true"></span>
+          <span class="issue__page">p.08</span>
+        </a>
+      </li>
+    </ol>
+  </nav>
 
   <section class="team-block">
     <div class="wrap">
@@ -124,11 +183,11 @@ document.addEventListener("error", function (event) {
 
 <footer class="site-footer">
   <div class="wrap footer__row">
-    <p>The Skyward Project · Pune &amp; Mumbai</p>
+    <p>The Skyward Project · Vol. I · Pune &amp; Mumbai</p>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
 
-<script src="script.js?v=19"></script>
+<script src="script.js?v=20"></script>
 </body>
 </html>
