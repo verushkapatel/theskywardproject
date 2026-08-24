@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20">
+<link rel="stylesheet" href="styles.css?v=21">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -61,10 +61,50 @@ document.addEventListener("error", function (event) {
       </div>
       <p class="masthead__roles">Youth-led research · Educational equity · Financial literacy</p>
       <span class="rules" aria-hidden="true"></span>
-      <p class="masthead__lead">Lead Story</p>
-      <p class="masthead__deck">Financial literacy should not be a privilege tied to school type, family background, or academic stream.</p>
-      <a class="button" href="mission.html">The Mission</a>
     </header>
+
+    <div class="front wrap">
+      <article class="lead" data-reveal>
+        <p class="masthead__lead">Lead Story</p>
+        <h2 class="lead__headline">Financial literacy should not be a privilege tied to school type, family background, or academic stream.</h2>
+        <p class="lead__byline">By the editors · 24 August 2026</p>
+        <p class="lead__dek">A youth-led research and policy effort on educational equity and money skills. One paper, every grade, every board — written for a sixteen-year-old in Pune or Mumbai.</p>
+        <a class="button" href="mission.html">Continue</a>
+      </article>
+      <nav class="issue" data-reveal aria-label="In this issue">
+        <p class="kicker">In this issue</p>
+        <ol class="issue__list">
+          <li>
+            <a href="mission.html">
+              <span class="issue__title">The Mission</span>
+              <span class="issue__leaders" aria-hidden="true"></span>
+              <span class="issue__page">p.02</span>
+            </a>
+          </li>
+          <li>
+            <a href="finlit-index.html">
+              <span class="issue__title">The FinLit Index</span>
+              <span class="issue__leaders" aria-hidden="true"></span>
+              <span class="issue__page">p.04</span>
+            </a>
+          </li>
+          <li>
+            <a href="dispatches.html">
+              <span class="issue__title">Dispatches</span>
+              <span class="issue__leaders" aria-hidden="true"></span>
+              <span class="issue__page">p.06</span>
+            </a>
+          </li>
+          <li>
+            <a href="field-notes.html">
+              <span class="issue__title">Field Notes</span>
+              <span class="issue__leaders" aria-hidden="true"></span>
+              <span class="issue__page">p.08</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
     <div class="columns wrap">
       <div class="column" data-reveal>
         <p class="kicker">What we do</p>
@@ -102,40 +142,6 @@ document.addEventListener("error", function (event) {
       </div>
     </div>
   </section>
-
-  <nav class="issue wrap" data-reveal aria-label="In this issue">
-    <p class="kicker">In this issue</p>
-    <ol class="issue__list">
-      <li>
-        <a href="mission.html">
-          <span class="issue__title">The Mission</span>
-          <span class="issue__leaders" aria-hidden="true"></span>
-          <span class="issue__page">p.02</span>
-        </a>
-      </li>
-      <li>
-        <a href="finlit-index.html">
-          <span class="issue__title">The FinLit Index</span>
-          <span class="issue__leaders" aria-hidden="true"></span>
-          <span class="issue__page">p.04</span>
-        </a>
-      </li>
-      <li>
-        <a href="dispatches.html">
-          <span class="issue__title">Dispatches</span>
-          <span class="issue__leaders" aria-hidden="true"></span>
-          <span class="issue__page">p.06</span>
-        </a>
-      </li>
-      <li>
-        <a href="field-notes.html">
-          <span class="issue__title">Field Notes</span>
-          <span class="issue__leaders" aria-hidden="true"></span>
-          <span class="issue__page">p.08</span>
-        </a>
-      </li>
-    </ol>
-  </nav>
 
   <section class="team-block">
     <div class="wrap">
@@ -188,6 +194,6 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=20"></script>
+<script src="script.js?v=21"></script>
 </body>
 </html>
