@@ -76,6 +76,13 @@
 
   document.documentElement.classList.add("js-ready");
 
+  var onScroll = function () {
+    if (!nav) return;
+    nav.classList.toggle("is-scrolled", window.scrollY > 12);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
   var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   var reveals = document.querySelectorAll("[data-reveal]");
   if (reveals.length) {
