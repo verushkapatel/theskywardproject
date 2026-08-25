@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Take the test — The Skyward Project</title>
-<meta name="description" content="Sit the FinLit Index online. 27 questions for grades 9 to 12. After you finish, we email your score, what you missed, and why the correct answers are right.">
+<meta name="description" content="Sit the FinLit Index. 27 questions for grades 9 to 12. We email your score, what you missed, and why the correct answers are right.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=24">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,opsz,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=25">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -40,65 +40,41 @@ document.addEventListener("error", function (event) {
   </div>
   <ul class="site-nav__list" id="menu">
     <li><a href="index.html">Home</a></li>
+    <li><a href="take-the-test.html" aria-current="page">Take the test</a></li>
     <li><a href="mission.html">Mission</a></li>
     <li><a href="finlit-index.html">FinLit Index</a></li>
-    <li><a href="take-the-test.html" aria-current="page">Take the test</a></li>
     <li><a href="dispatches.html">Dispatches</a></li>
     <li><a href="field-notes.html">Field Notes</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<main id="main" class="wash">
-  <div class="wash__art" aria-hidden="true">
-    <img src="assets/plate-assessment.jpg" alt="" width="1400" height="933" loading="lazy">
-  </div>
-
-  <header class="page-head wrap" data-reveal>
-    <p class="page-folio">Vol. I · Pune &amp; Mumbai · 2026</p>
-    <p class="kicker">For students</p>
-    <h1>Take the online test.</h1>
-    <p class="byline">Grades 9 to 12 · 27 questions · emailed results</p>
+<main id="main">
+  <header class="edition-head wrap">
+    <p class="masthead__folio"><span>Vol. I</span><span class="masthead__dot" aria-hidden="true"> · </span><span>Pune &amp; Mumbai</span><span class="masthead__dot" aria-hidden="true"> · </span><span>2026</span></p>
+    <p class="masthead__record">The FinLit Index</p>
+    <h1>Take the test.</h1>
+    <p class="byline">Grades 9 to 12</p>
     <span class="rules" aria-hidden="true"></span>
   </header>
 
-  <article class="article wrap">
-    <section data-reveal>
-      <p class="lede">This paper is for ninth to twelfth graders who want to know where they stand on money skills, and what they must improve on. It is the same FinLit Index we use in the field &mdash; written for a sixteen-year-old in Pune or Mumbai.</p>
-    </section>
-    <section data-reveal>
-      <p class="kicker">How long it takes</p>
-      <p>It is a relatively short test of 27 questions. Most students finish in under 15 minutes. We have given you 30.</p>
-    </section>
-    <section data-reveal>
-      <p class="kicker">What you get afterwards</p>
-      <p>After you submit, we will send you a direct email with your score, the questions you got wrong, the correct option, and an explanation of why that option is right. Use an email address you can open on this device or later the same day. Check spam if it does not arrive within a few minutes.</p>
-    </section>
-    <section data-reveal>
-      <p class="kicker">Before you start</p>
-      <ul class="tiers">
-        <li>
-          <dfn>27 questions</dfn>
-          <p>25 marks, four parts. Warm up, everyday money, careful reasoning, then a short market-awareness round.</p>
-        </li>
-        <li>
-          <dfn>One answer each</dfn>
-          <p>You can move between questions until you submit, or until the 30 minutes end.</p>
-        </li>
-        <li>
-          <dfn>Your email</dfn>
-          <p>Required, so we can send your score and the explanations. We do not put the answer key on the test page itself.</p>
-        </li>
+  <div class="front wrap edition-front">
+    <article class="lead" data-reveal>
+      <p class="masthead__lead">For students</p>
+      <h2 class="lead__headline">Know where you stand.</h2>
+      <p class="lead__dek">Twenty-seven questions on money skills. Most students finish in under fifteen minutes. We have given you thirty.</p>
+      <a class="button button--test" href="test.html">Take the test</a>
+    </article>
+    <aside class="edition-rail" data-reveal>
+      <p class="kicker">The paper</p>
+      <ul class="edition-facts">
+        <li><strong>27</strong><span>Questions</span></li>
+        <li><strong>15</strong><span>Minutes for most</span></li>
+        <li><strong>30</strong><span>Minutes given</span></li>
       </ul>
-    </section>
-    <section data-reveal>
-      <p>Financial decisions in real life still depend on your family, your income, and your goals. This test does not tell you what is right for your household. It measures how you reason about money as a general skill.</p>
-      <p class="footnote">Schools hosting a research sitting should <a href="contact.html">write to us</a> rather than using this public page.</p>
-    </section>
-    <p data-reveal style="margin:2.2rem 0 3rem;">
-      <a class="button" href="test.html">Begin the test</a>
-    </p>
-  </article>
+      <p class="edition-post">After you finish, we email your score, what you missed, and why the correct option is right.</p>
+    </aside>
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -108,6 +84,6 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=24"></script>
+<script src="script.js?v=25"></script>
 </body>
 </html>

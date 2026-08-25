@@ -433,6 +433,95 @@ a:hover {
   opacity: 1;
 }
 
+.button--test {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 1.05rem 2.35rem;
+  min-width: min(100%, 18.5rem);
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0.28rem 0.28rem 0 0 var(--accent);
+}
+
+.button--test::after {
+  content: " \2192";
+  font-size: 1em;
+}
+
+.button--test:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 0.28rem 0.28rem 0 0 var(--ink);
+}
+
+.edition-head {
+  text-align: center;
+  padding-top: 2.35rem;
+  padding-bottom: 0.35rem;
+}
+
+.edition-head h1 {
+  font-size: clamp(2.35rem, 11vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  max-width: none;
+  margin: 0.1rem auto 0.7rem;
+}
+
+.edition-front {
+  padding-bottom: 3.5rem;
+}
+
+.edition-rail {
+  text-align: center;
+  padding-top: 0.35rem;
+}
+
+.edition-facts {
+  list-style: none;
+  margin: 0 0 1.35rem;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.edition-facts li {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.edition-facts strong {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.edition-facts span {
+  font-family: var(--utility);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.edition-post {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
 .wash {
   position: relative;
   overflow: hidden;
@@ -1279,6 +1368,44 @@ a:hover {
   .lead .button {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .edition-head {
+    padding-top: 3.1rem;
+  }
+
+  .edition-head h1 {
+    font-size: clamp(3.2rem, 6.4vw, 4.35rem);
+    margin-bottom: 0.85rem;
+    max-width: 100%;
+  }
+
+  .edition-front.front {
+    padding-top: 1.6rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .edition-rail {
+    padding-top: 0;
+    padding-left: 1.85rem;
+    text-align: left;
+  }
+
+  .edition-rail .kicker {
+    text-align: left;
+  }
+
+  .edition-facts li {
+    justify-content: flex-start;
+  }
+
+  .edition-post {
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .edition-front .button--test {
+    margin-left: 0;
   }
 
   .front .issue {
