@@ -70,6 +70,7 @@
     font-size:.92rem; color:var(--muted); background:var(--wash);
     border-left:2px solid var(--accent); padding:12px 14px; margin:4px 0 20px;
   }
+  .hint{font-size:.82rem; color:var(--muted); margin-top:7px;}
   .checks,.radios{display:flex; flex-direction:column; gap:8px;}
   .checks label, .radios label{
     display:flex; align-items:center; gap:10px; font-size:.95rem;
@@ -236,6 +237,7 @@
         <div class="field">
           <label class="lbl" for="f-email">Email</label>
           <input type="email" id="f-email" autocomplete="email" required>
+          <p class="hint">Each email address may sit the paper once. We use it to send your results.</p>
         </div>
         <div class="field">
           <label class="lbl" for="f-grade">Grade</label>
@@ -301,7 +303,7 @@
 
       <p class="err" id="err-details">Please fill in your name, email, grade, and school. We need the email to send your results.</p>
       <div class="actions">
-        <button class="btn" type="button" onclick="toInstructions()">Continue</button>
+        <button class="btn" type="button" id="btn-continue" onclick="toInstructions()">Continue</button>
       </div>
     </div>
   </section>
@@ -380,6 +382,8 @@ const RESULTS_EMAIL = "verushkapatel4@gmail.com";
 const SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyHrT-zCr-qk7ERVA4NBIHGO_FwbjbeNSha5tg9XYMyAAoYmIh05t81toaHQnaFbhL5cg/exec";
 const TEST_MINUTES = 30;
 const STORAGE_KEY = "skyward_finlit_practice_2026";
+const TAKEN_EMAILS_KEY = "skyward_finlit_taken_emails";
+const RESPONSES_SHEET_ID = "1cntlU1VebqoA2AZE9Vqa1VQ6st-jW8xYNZwVD-Yp044";
 /* ========================================== */
 
 const QUESTIONS = [
@@ -458,8 +462,83 @@ function toInstructions(){
   const school = document.getElementById("f-school").value.trim();
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const ok = !!(name && emailOk && grade && school);
-  document.getElementById("err-details").style.display = ok ? "none" : "block";
-  if(ok) show("s-inst");
+  const err = document.getElementById("err-details");
+  const btn = document.getElementById("btn-continue");
+  if(!ok){
+    err.textContent = "Please fill in your name, email, grade, and school. We need the email to send your results.";
+    err.style.display = "block";
+    return;
+  }
+  err.style.display = "none";
+  if(btn){ btn.disabled = true; }
+  emailAlreadySat(email).then(function(taken){
+    if(taken){
+      err.textContent = "This email has already sat the paper. Each address may take the test once.";
+      err.style.display = "block";
+      return;
+    }
+    show("s-inst");
+  }).finally(function(){
+    if(btn){ btn.disabled = false; }
+  });
+}
+
+function normEmail(raw){
+  return String(raw || "").trim().toLowerCase();
+}
+
+function localTakenEmails(){
+  try{ return JSON.parse(localStorage.getItem(TAKEN_EMAILS_KEY) || "[]"); }
+  catch(e){ return []; }
+}
+
+function markEmailTaken(email){
+  const n = normEmail(email);
+  if(!n) return;
+  const list = localTakenEmails();
+  if(list.indexOf(n) === -1){
+    list.push(n);
+    localStorage.setItem(TAKEN_EMAILS_KEY, JSON.stringify(list));
+  }
+}
+
+function emailAlreadySat(email){
+  const n = normEmail(email);
+  if(!n) return Promise.resolve(false);
+  if(localTakenEmails().indexOf(n) !== -1) return Promise.resolve(true);
+  return sheetHasEmail(n);
+}
+
+function sheetHasEmail(email){
+  return new Promise(function(resolve){
+    const cb = "skywardEq" + Date.now() + Math.floor(Math.random() * 100000);
+    let done = false;
+    const finish = function(val){
+      if(done) return;
+      done = true;
+      try{ delete window[cb]; }catch(e){}
+      if(script.parentNode) script.parentNode.removeChild(script);
+      resolve(!!val);
+    };
+    window[cb] = function(res){
+      let hit = false;
+      try{
+        (res.table.rows || []).forEach(function(row){
+          const cell = row.c && row.c[0];
+          const v = cell && cell.v;
+          if(normEmail(v) === email) hit = true;
+        });
+      }catch(e){}
+      finish(hit);
+    };
+    const script = document.createElement("script");
+    script.src = "https://docs.google.com/spreadsheets/d/" + RESPONSES_SHEET_ID +
+      "/gviz/tq?tqx=" + encodeURIComponent("out:json;responseHandler:" + cb) +
+      "&sheet=Responses&tq=" + encodeURIComponent("select C");
+    script.onerror = function(){ finish(false); };
+    setTimeout(function(){ finish(false); }, 4500);
+    document.head.appendChild(script);
+  });
 }
 
 function startTest(){
@@ -672,6 +751,7 @@ function restore(){
       });
     }
     if(submitted){
+      if(data.bg && data.bg.email) markEmailTaken(data.bg.email);
       if(timedOut) applyTimedOutCopy();
       show("s-done");
       return;
@@ -707,6 +787,7 @@ async function submitTest(auto){
 
   const s = scoreIt();
   const bg = collectBackground();
+  markEmailTaken(bg.email);
   const mail = bg.email || "the address you entered";
   document.getElementById("done-title").textContent = "Your score is " + s.total + " / 25";
   document.getElementById("done-copy").innerHTML = "We are emailing " + mail + " with the questions you missed, the correct answers, and why they are right. Check inbox and spam in a few minutes.<br>This test looked at how you think about money as a general skill.";

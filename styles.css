@@ -457,6 +457,54 @@ a:hover {
   box-shadow: 0.28rem 0.28rem 0 0 var(--ink);
 }
 
+.lead__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.lead__more {
+  font-family: var(--utility);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.lead__more:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.test-notice {
+  text-align: center;
+  padding: 2.4rem 0 3rem;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.test-notice .kicker {
+  margin-bottom: 0.55rem;
+}
+
+.test-notice__line {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 26rem;
+  margin: 0 auto 1.4rem;
+}
+
+.test-notice .button--test {
+  margin-top: 0.15rem;
+}
+
 .edition-head {
   text-align: center;
   padding-top: 2.35rem;
@@ -1368,6 +1416,19 @@ a:hover {
   .lead .button {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .lead__actions {
+    align-items: flex-start;
+  }
+
+  .test-notice {
+    padding: 2.75rem 0 3.25rem;
+  }
+
+  .test-notice__line {
+    font-size: 1.28rem;
+    max-width: 32rem;
   }
 
   .edition-head {

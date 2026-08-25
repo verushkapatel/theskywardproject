@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=25">
+<link rel="stylesheet" href="styles.css?v=26">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -70,7 +70,10 @@ document.addEventListener("error", function (event) {
         <h2 class="lead__headline">Financial literacy should not be a privilege tied to school type, family background, or academic stream.</h2>
         <p class="lead__byline">By the editors · 24 August 2026</p>
         <p class="lead__dek">A youth-led research and policy effort on educational equity and money skills. One paper, every grade, every board — written for a sixteen-year-old in Pune or Mumbai.</p>
-        <a class="button" href="mission.html">Continue reading</a>
+        <div class="lead__actions">
+          <a class="button button--test" href="take-the-test.html">Take the test</a>
+          <a class="lead__more" href="mission.html">Read the mission</a>
+        </div>
       </article>
       <nav class="issue" data-reveal aria-label="In this issue">
         <p class="kicker">In this issue</p>
@@ -127,6 +130,12 @@ document.addEventListener("error", function (event) {
         <p>Pune and Mumbai, 2026. The instrument is written. We are looking for a first pilot across schools of different boards and income groups in both cities.</p>
       </div>
     </div>
+  </section>
+
+  <section class="test-notice wrap" data-reveal>
+    <p class="kicker">The FinLit Index</p>
+    <p class="test-notice__line">Grades 9 to 12. Sit the paper, then read what we send you.</p>
+    <a class="button button--test" href="take-the-test.html">Take the test</a>
   </section>
 
   <section class="ledger wrap" data-reveal>
@@ -202,6 +211,6 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=25"></script>
+<script src="script.js?v=26"></script>
 </body>
 </html>
