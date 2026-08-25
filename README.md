@@ -9,6 +9,8 @@ you can open and edit in any text editor.
 index.html          Home (masthead, thesis, city plate, three columns, core team)
 mission.html        The Mission
 finlit-index.html   The FinLit Index
+take-the-test.html  Public student landing page for the online paper
+test.html           The 27-question practice test (email required)
 dispatches.html     Dispatches (placeholder)
 field-notes.html    Field Notes (placeholder)
 contact.html        Contact form
@@ -34,7 +36,7 @@ version.
 The team lives on the home page, below the three-column introduction. There is
 no separate team page.
 
-The navigation is a thin fixed bar across the top, carrying the emblem and six
+The navigation is a thin fixed bar across the top, carrying the emblem and seven
 links. The emblem is also shown beside the homepage wordmark (display only).
 On the home page the bar stays hidden until the masthead scrolls out of view,
 then fades in; every other page shows it immediately and adds

@@ -1131,11 +1131,14 @@ a:hover {
   .site-nav__list {
     display: flex;
     align-items: center;
-    gap: 1.35rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.7rem 0.95rem;
     margin: 0;
     padding: 0;
     border: 0;
     background: transparent;
+    max-width: 42rem;
   }
 
   .site-nav.is-open .site-nav__list {
@@ -1144,7 +1147,7 @@ a:hover {
 
   .site-nav__list a {
     padding: 0;
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     position: relative;
   }
 
