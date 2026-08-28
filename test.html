@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store">
 <title>FinLit Index · Online test | The Skyward Project</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -233,11 +234,11 @@
 
       <div class="field">
           <label class="lbl" for="f-name">Full name</label>
-          <input type="text" id="f-name" autocomplete="name" required placeholder="Your name">
+          <input type="text" id="f-name" name="finlit-full-name" autocomplete="off" autocorrect="off" autocapitalize="words" spellcheck="false" required placeholder="Your name">
       </div>
       <div class="field">
         <label class="lbl" for="f-email">Email <span class="req">(required)</span></label>
-        <input type="email" id="f-email" autocomplete="email" required>
+        <input type="email" id="f-email" name="finlit-email" autocomplete="email" inputmode="email" required placeholder="name@gmail.com">
         <p class="hint">Required. We save this address on the response sheet and send your results here. Each address may sit the paper once.</p>
       </div>
       <div class="row2">
@@ -403,12 +404,15 @@
 <script>
 /* ================= CONFIG ================= */
 const RESULTS_EMAIL = "verushkapatel4@gmail.com";
+const WEB3FORMS_KEY = "d38558e6-c576-4688-b65d-367953ec1fc9";
 const SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyD2nysGjyt92thQY6ORrqTm1qtaeWPiaFpiJIHICqFhH-pqL01Aein4MH0LJPzVSZQVA/exec";
+const SUBMIT_PATH = "/finlit-submit";
 const TEST_MINUTES = 30;
-const STORAGE_KEY = "skyward_finlit_practice_2026_v3";
+const STORAGE_KEY = "skyward_finlit_practice_2026_v4";
 const TAKEN_EMAILS_KEY = "skyward_finlit_taken_emails";
 const RESPONSES_SHEET_ID = "1cntlU1VebqoA2AZE9Vqa1VQ6st-jW8xYNZwVD-Yp044";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PLACEHOLDER_NAME_RE = /^(student|test|name|asdf|anonymous)$/i;
 /* ========================================== */
 
 const QUESTIONS = [
@@ -486,31 +490,58 @@ function show(id){
   window.scrollTo(0,0);
 }
 
+function isPlaceholderName(name){
+  return PLACEHOLDER_NAME_RE.test(String(name || "").trim());
+}
+
+function coerceBackground(bg){
+  const next = Object.assign({}, bg || {});
+  next.name = String(next.name || "").trim();
+  next.email = String(next.email || "").trim();
+  if(isPlaceholderName(next.name)) next.name = "";
+  if(EMAIL_RE.test(next.name) && !EMAIL_RE.test(next.email)){
+    const swapped = next.email;
+    next.email = next.name;
+    next.name = swapped;
+  }
+  if(!EMAIL_RE.test(next.email) && next.email.indexOf("@") < 0){
+    next.email = "";
+  }
+  return next;
+}
+
+function detailsAreComplete(){
+  const bg = coerceBackground(collectBackground());
+  return !!(bg.name && !isPlaceholderName(bg.name) && EMAIL_RE.test(bg.email) && bg.grade && bg.board && bg.school);
+}
+
+function detailsError(raw){
+  const name = String((raw && raw.name) || "").trim();
+  const email = String((raw && raw.email) || "").trim();
+  if(isPlaceholderName(name)){
+    return "Please enter your real name, not “student”.";
+  }
+  if(email && !EMAIL_RE.test(email)){
+    return "Please enter a real email address so we can record it and send your results.";
+  }
+  return "Please fill in your name, a real email, grade, board, and school. Email is required.";
+}
+
 function toInstructions(){
-  const name = document.getElementById("f-name").value.trim();
-  const email = document.getElementById("f-email").value.trim();
-  const grade = document.getElementById("f-grade").value;
-  const board = document.getElementById("f-board").value;
-  const school = document.getElementById("f-school").value.trim();
-  const emailOk = EMAIL_RE.test(email);
-  const nameOk = !!(name && !/^student$/i.test(name));
-  const ok = !!(nameOk && emailOk && grade && board && school);
+  const raw = collectBackground();
+  const bg = coerceBackground(raw);
+  document.getElementById("f-name").value = bg.name;
+  document.getElementById("f-email").value = bg.email;
   const err = document.getElementById("err-details");
   const btn = document.getElementById("btn-continue");
-  if(!ok){
-    if(name && /^student$/i.test(name)){
-      err.textContent = "Please enter your real name, not “student”.";
-    } else if(email && !emailOk){
-      err.textContent = "Please enter a real email address so we can record it and send your results.";
-    } else {
-      err.textContent = "Please fill in your name, a real email, grade, board, and school. Email is required.";
-    }
+  if(!detailsAreComplete()){
+    err.textContent = detailsError(raw);
     err.style.display = "block";
     return;
   }
   err.style.display = "none";
   if(btn){ btn.disabled = true; }
-  emailAlreadySat(email).then(function(taken){
+  emailAlreadySat(bg.email).then(function(taken){
     if(taken){
       err.textContent = "This email has already sat the paper. Each address may take the test once.";
       err.style.display = "block";
@@ -880,8 +911,9 @@ function restore(){
     leftPaper = !!data.leftPaper;
     leaveCount = Number(data.leaveCount) || 0;
     if(data.bg){
-      document.getElementById("f-name").value = data.bg.name || "";
-      document.getElementById("f-email").value = data.bg.email || "";
+      const bg = coerceBackground(data.bg);
+      document.getElementById("f-name").value = bg.name || "";
+      document.getElementById("f-email").value = bg.email || "";
       document.getElementById("f-grade").value = data.bg.grade || "";
       document.getElementById("f-board").value = data.bg.board || "";
       document.getElementById("f-school").value = data.bg.school || "";
@@ -899,13 +931,20 @@ function restore(){
       });
     }
     if(submitted){
-      if(data.bg && data.bg.email) markEmailTaken(data.bg.email);
+      if(data.bg && EMAIL_RE.test((data.bg.email || ""))) markEmailTaken(data.bg.email);
       if(leftPaper) applyLeftPaperCopy();
       else if(timedOut) applyTimedOutCopy();
       show("s-done");
       return;
     }
     if(startedAt){
+      if(!detailsAreComplete()){
+        show("s-details");
+        const err = document.getElementById("err-details");
+        err.textContent = detailsError(data.bg);
+        err.style.display = "block";
+        return;
+      }
       secondsLeft = remainingSeconds();
       if(secondsLeft <= 0){
         lockTest(true);
@@ -924,14 +963,16 @@ function newStudent(){
 
 async function submitTest(auto){
   if(submitted) return;
-  const bgCheck = collectBackground();
-  if(!EMAIL_RE.test(bgCheck.email) || !bgCheck.name || /^student$/i.test(bgCheck.name)){
+  const raw = collectBackground();
+  const bg = coerceBackground(raw);
+  document.getElementById("f-name").value = bg.name;
+  document.getElementById("f-email").value = bg.email;
+  if(!detailsAreComplete()){
     show("s-details");
     const err = document.getElementById("err-details");
-    err.textContent = /^student$/i.test(bgCheck.name)
-      ? "Please enter your real name, not “student”."
-      : "Email is required. We cannot record this attempt without it.";
+    err.textContent = detailsError(raw);
     err.style.display = "block";
+    persist();
     return;
   }
   submitted = true;
@@ -949,9 +990,8 @@ async function submitTest(auto){
   persist();
 
   const s = scoreIt();
-  const bg = collectBackground();
   markEmailTaken(bg.email);
-  const mail = bg.email || "the address you entered";
+  const mail = bg.email;
   if(leftPaper){
     applyLeftPaperCopy();
   } else if(auto){
@@ -962,12 +1002,42 @@ async function submitTest(auto){
     document.getElementById("done-copy").innerHTML = "Thank you. Your score, the questions you missed, and the explanations will be emailed to " + mail + " in about an hour. Check your inbox and spam then. The mark is not shown on this page.";
   }
   const timeUsedMin = Math.round((TEST_MINUTES * 60 - Math.max(remainingSeconds(), 0)) / 6) / 10;
+  const timedOutLabel = leftPaper ? "Yes" : (auto ? "Yes" : "No");
+  const missed = QUESTIONS.map((q, i) =>
+    answers[i] === q.key ? null :
+    "Q" + (i + 1) + (answers[i] ? " (picked " + answers[i] + ")" : " (blank)")
+  ).filter(Boolean).join("; ") || "None";
+  const choices = QUESTIONS.map((_, i) => answers[i] || "blank");
+  const cells = [
+    new Date().toISOString(),
+    bg.name,
+    bg.email,
+    bg.grade,
+    bg.school,
+    bg.board,
+    bg.bg_transport,
+    bg.bg_parents,
+    bg.bg_area,
+    bg.bg_devices,
+    bg.bg_income,
+    timeUsedMin,
+    timedOutLabel,
+    s.total,
+    s.parts.A,
+    s.parts.B,
+    s.parts.C,
+    s.parts.D,
+    missed
+  ].concat(choices, [""]);
   const payload = {
-    version: "finlit-2026-practice",
+    version: "finlit-2026-v4",
+    layout: "finlit-v4",
     feedback: true,
-    submitted_at: new Date().toISOString(),
+    submitted_at: cells[0],
     name: bg.name,
+    Name: bg.name,
     email: bg.email,
+    Email: bg.email,
     grade: bg.grade,
     board: bg.board,
     Board: bg.board,
@@ -982,39 +1052,47 @@ async function submitTest(auto){
     time_used_min: timeUsedMin,
     auto_submitted: leftPaper ? "yes (left the paper)" : (auto ? "yes (time up)" : "no"),
     leave_count: leaveCount,
-    score_total: s.total + " / 25",
+    score_total: s.total,
     score: s.total,
     part_a: s.parts.A,
     part_b: s.parts.B,
     part_c: s.parts.C,
     part_d: s.parts.D,
-    wrong_questions: QUESTIONS.map((q, i) =>
-      answers[i] === q.key ? null :
-      "Q" + (i + 1) + (answers[i] ? " (picked " + answers[i] + ")" : " (blank)")
-    ).filter(Boolean).join("; ") || "None - all correct"
+    wrong_questions: missed,
+    cells: cells
   };
   QUESTIONS.forEach((q, i) => {
-    payload["q" + (i + 1)] = answers[i] || "blank";
-    payload["q" + (i + 1) + "_choice"] = answers[i] || "blank";
+    payload["q" + (i + 1)] = choices[i];
+    payload["q" + (i + 1) + "_choice"] = choices[i];
   });
-  payload.Email = payload.email;
-  payload.Name = payload.name;
 
   let sent = false;
-  if(RESULTS_EMAIL && !RESULTS_EMAIL.startsWith("YOUR_EMAIL")){
+  try{
+    const r = await fetch(SUBMIT_PATH, {
+      method: "POST",
+      headers: {"Content-Type":"application/json","Accept":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    if(r.ok) sent = true;
+  }catch(e){ console.error("finlit-submit failed", e); }
+  if(!sent && WEB3FORMS_KEY){
     try{
-      const r = await fetch("https://formsubmit.co/ajax/" + RESULTS_EMAIL, {
+      const r = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {"Content-Type":"application/json","Accept":"application/json"},
         body: JSON.stringify({
-          _subject: "FinLit attempt: " + payload.name + " — " + payload.score_total,
-          ...payload
+          access_key: WEB3FORMS_KEY,
+          subject: "FinLit attempt: " + payload.name + " — " + payload.score + " / 25",
+          from_name: "FinLit Index",
+          name: payload.name,
+          email: payload.email,
+          message: JSON.stringify(payload)
         })
       });
       if(r.ok) sent = true;
-    }catch(e){ console.error("FormSubmit failed", e); }
+    }catch(e){ console.error("Web3Forms failed", e); }
   }
-  if(SHEETS_WEBHOOK){
+  if(!sent && SHEETS_WEBHOOK){
     try{
       await fetch(SHEETS_WEBHOOK, {
         method: "POST",

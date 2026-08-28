@@ -1,0 +1,8 @@
+name = "theskywardproject"
+main = "worker.js"
+compatibility_date = "2025-08-25"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+not_found_handling = "404-page"
