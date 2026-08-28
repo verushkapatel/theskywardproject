@@ -44,21 +44,11 @@ then fades in; every other page shows it immediately and adds
 same block of HTML in each file — if you add a page, paste the block in and set
 `aria-current="page"` on the matching item.
 
-## Before launch: make the contact form work
+## Contact form
 
-1. Go to [web3forms.com](https://web3forms.com) and enter the email address
-   where you want messages delivered. No account needed.
-2. Web3Forms emails you an access key.
-3. Open `contact.html`, find this line near the top of the form, and paste the
-   key in place of `PASTE_YOUR_KEY_HERE`:
-
-```html
-<input type="hidden" name="access_key" value="PASTE_YOUR_KEY_HERE">
-```
-
-That is the only change required. The free tier covers 250 submissions a month.
-When you later set up a Skyward email address, change the destination inside
-your Web3Forms dashboard — no code change needed.
+Letters from the site go to `verushka@theskywardproject.com` through FormSubmit.
+The first submission sends a confirmation to that inbox — open it and click
+the link once, or later messages will not arrive.
 
 ## Viewing it locally
 

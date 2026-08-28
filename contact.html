@@ -61,11 +61,11 @@ document.addEventListener("error", function (event) {
 
   <div class="wrap">
     <p class="kicker letters-kicker" data-reveal>Letters to the editors</p>
-    <form class="form" data-reveal action="https://api.web3forms.com/submit" method="POST" data-contact-form>
-      <input type="hidden" name="access_key" value="d38558e6-c576-4688-b65d-367953ec1fc9">
-      <input type="hidden" name="subject" value="New message from Skyward Project website">
-      <input type="hidden" name="from_name" value="The Skyward Project website">
-      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" aria-hidden="true">
+    <form class="form" data-reveal action="https://formsubmit.co/verushka@theskywardproject.com" method="POST" data-contact-form>
+      <input type="hidden" name="_subject" value="New message from The Skyward Project website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="field">
         <label for="name">Name</label>
@@ -106,6 +106,6 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=26"></script>
+<script src="script.js?v=27"></script>
 </body>
 </html>
