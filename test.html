@@ -70,7 +70,8 @@
     font-size:.92rem; color:var(--muted); background:var(--wash);
     border-left:2px solid var(--accent); padding:12px 14px; margin:4px 0 20px;
   }
-  .hint{font-size:.82rem; color:var(--muted); margin-top:7px;}
+  .hint{font-size:.82rem; color:var(--muted); margin-top:7px; margin-bottom:10px;}
+  .req{font-weight:400; letter-spacing:0; color:var(--muted); text-transform:none;}
   .checks,.radios{display:flex; flex-direction:column; gap:8px;}
   .checks label, .radios label{
     display:flex; align-items:center; gap:10px; font-size:.95rem;
@@ -175,6 +176,7 @@
     display:none; align-items:center; justify-content:center; z-index:50; padding:20px;
   }
   .modal-bg.show{display:flex;}
+  .modal-bg.proctor{z-index:80;}
   .modal{background:var(--paper); border:1px solid var(--ink); padding:28px 24px; max-width:420px; width:100%;}
   .modal h3{font-family:"Playfair Display",Georgia,serif; font-size:1.25rem; color:var(--ink); margin-bottom:8px;}
   .modal p{font-size:.95rem; color:var(--muted);}
@@ -230,18 +232,18 @@
       <p class="note">This test is for students of grades 9 to 12 only.</p>
 
       <div class="field">
-        <label class="lbl" for="f-name">Name</label>
-        <input type="text" id="f-name" autocomplete="name">
+          <label class="lbl" for="f-name">Full name</label>
+          <input type="text" id="f-name" autocomplete="name" required placeholder="Your name">
+      </div>
+      <div class="field">
+        <label class="lbl" for="f-email">Email <span class="req">(required)</span></label>
+        <input type="email" id="f-email" autocomplete="email" required>
+        <p class="hint">Required. We save this address on the response sheet and send your results here. Each address may sit the paper once.</p>
       </div>
       <div class="row2">
         <div class="field">
-          <label class="lbl" for="f-email">Email</label>
-          <input type="email" id="f-email" autocomplete="email" required>
-          <p class="hint">Each email address may sit the paper once. We use it to send your results.</p>
-        </div>
-        <div class="field">
           <label class="lbl" for="f-grade">Grade</label>
-          <select id="f-grade">
+          <select id="f-grade" required>
             <option value="">Select</option>
             <option>9</option>
             <option>10</option>
@@ -249,10 +251,20 @@
             <option>12</option>
           </select>
         </div>
+        <div class="field">
+          <label class="lbl" for="f-board">Board</label>
+          <select id="f-board" required>
+            <option value="">Select</option>
+            <option>ICSE</option>
+            <option>CBSE</option>
+            <option>IGCSE</option>
+            <option>IB</option>
+          </select>
+        </div>
       </div>
       <div class="field">
         <label class="lbl" for="f-school">School</label>
-        <input type="text" id="f-school" autocomplete="organization">
+        <input type="text" id="f-school" autocomplete="organization" required>
       </div>
     </div>
 
@@ -291,6 +303,7 @@
       </div>
       <div class="field">
         <label class="lbl">What is your family's monthly income?</label>
+        <p class="hint">This is to determine the socioeconomic correlation in our research. If you are not certain, or you do not want to disclose it, it is okay to pick Not sure.</p>
         <div class="radios">
           <label><input type="radio" name="b-income" value="₹0 to 25,000">₹0 to 25,000</label>
           <label><input type="radio" name="b-income" value="₹25,001 to 50,000">₹25,001 to 50,000</label>
@@ -301,7 +314,7 @@
         </div>
       </div>
 
-      <p class="err" id="err-details">Please fill in your name, email, grade, and school. We need the email to send your results.</p>
+      <p class="err" id="err-details">Please fill in your name, a real email, grade, board, and school. Email is required so we can record it and send your results.</p>
       <div class="actions">
         <button class="btn" type="button" id="btn-continue" onclick="toInstructions()">Continue</button>
       </div>
@@ -322,7 +335,8 @@
         <li>Pick <b>one answer</b> per question. You can move between questions and change answers until you submit, or until time runs out.</li>
         <li>Use a rough sheet for any working out.</li>
         <li>When the timer ends, the test closes and your answers are sent automatically. Do not refresh or close this page during the test.</li>
-        <li>After you finish we email your score, the questions you missed, and why the correct option is right. Use an email you can check.</li>
+        <li>Stay on this screen. The paper goes full screen. Switching tabs, windows, or apps is treated as leaving. Warnings will be given if you leave.</li>
+        <li>After you finish we email your score, the questions you missed, and why the correct option is right. That letter arrives about an hour later. Email is required. Use an address you can check.</li>
       </ol>
       <p class="note" style="margin-top:22px; margin-bottom:0;">
         Financial decisions in real life depend on your family, your income, your community, and your goals. There is not one right answer for every household. This test does not measure what is right for your specific situation. It measures how you reason about money as a general skill. Answer what you think the best general answer is.
@@ -354,7 +368,7 @@
       <img src="assets/skyward-emblem.png" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:block;">
       <p class="kicker" id="done-kicker">Submitted</p>
       <h1 id="done-title">Your responses have been recorded</h1>
-      <p class="meta" id="done-copy" style="margin-top:12px;">Thank you. We are sending your score, the questions you missed, and the explanations to your email. Check your inbox and spam in a few minutes. The mark is not shown on this page.</p>
+      <p class="meta" id="done-copy" style="margin-top:12px;">Thank you. Your score, the questions you missed, and the explanations will be emailed in about an hour. Check your inbox and spam then. The mark is not shown on this page.</p>
       <p class="err" id="err-send" style="margin-top:16px;">We had trouble sending your responses automatically. Please tell the administrator.</p>
       <div class="actions" style="justify-content:center;">
         <a class="btn ghost" href="take-the-test.html" style="text-decoration:none;">Back</a>
@@ -376,14 +390,25 @@
   </div>
 </div>
 
+<div class="modal-bg proctor" id="proctor-modal">
+  <div class="modal">
+    <h3>Stay on this paper</h3>
+    <p>This test must stay in front. Switching tabs, windows, or apps counts as leaving. Stay on this screen.</p>
+    <div class="actions">
+      <button class="btn" type="button" onclick="resumeAfterLeave()">Continue the test</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ================= CONFIG ================= */
 const RESULTS_EMAIL = "verushkapatel4@gmail.com";
-const SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyHrT-zCr-qk7ERVA4NBIHGO_FwbjbeNSha5tg9XYMyAAoYmIh05t81toaHQnaFbhL5cg/exec";
+const SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyD2nysGjyt92thQY6ORrqTm1qtaeWPiaFpiJIHICqFhH-pqL01Aein4MH0LJPzVSZQVA/exec";
 const TEST_MINUTES = 30;
-const STORAGE_KEY = "skyward_finlit_practice_2026";
+const STORAGE_KEY = "skyward_finlit_practice_2026_v3";
 const TAKEN_EMAILS_KEY = "skyward_finlit_taken_emails";
 const RESPONSES_SHEET_ID = "1cntlU1VebqoA2AZE9Vqa1VQ6st-jW8xYNZwVD-Yp044";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /* ========================================== */
 
 const QUESTIONS = [
@@ -435,6 +460,12 @@ let startedAt = null;
 let submitted = false;
 let locked = false;
 let timedOut = false;
+let leftPaper = false;
+let leaveCount = 0;
+let proctorArmed = false;
+let requestingFs = false;
+let leaveGuard = false;
+let hadFullscreen = false;
 
 function esc(s){
   return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
@@ -459,13 +490,21 @@ function toInstructions(){
   const name = document.getElementById("f-name").value.trim();
   const email = document.getElementById("f-email").value.trim();
   const grade = document.getElementById("f-grade").value;
+  const board = document.getElementById("f-board").value;
   const school = document.getElementById("f-school").value.trim();
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const ok = !!(name && emailOk && grade && school);
+  const emailOk = EMAIL_RE.test(email);
+  const nameOk = !!(name && !/^student$/i.test(name));
+  const ok = !!(nameOk && emailOk && grade && board && school);
   const err = document.getElementById("err-details");
   const btn = document.getElementById("btn-continue");
   if(!ok){
-    err.textContent = "Please fill in your name, email, grade, and school. We need the email to send your results.";
+    if(name && /^student$/i.test(name)){
+      err.textContent = "Please enter your real name, not “student”.";
+    } else if(email && !emailOk){
+      err.textContent = "Please enter a real email address so we can record it and send your results.";
+    } else {
+      err.textContent = "Please fill in your name, a real email, grade, board, and school. Email is required.";
+    }
     err.style.display = "block";
     return;
   }
@@ -541,8 +580,9 @@ function sheetHasEmail(email){
   });
 }
 
-function startTest(){
+async function startTest(){
   if(locked || submitted) return;
+  await enterFullscreen_();
   startedAt = startedAt || new Date();
   show("s-test");
   document.getElementById("testbar").style.display = "flex";
@@ -552,7 +592,105 @@ function startTest(){
   tick(true);
   timerId = setInterval(() => tick(false), 1000);
   window.addEventListener("beforeunload", warnLeave);
+  armProctor_();
   persist();
+}
+
+async function enterFullscreen_(){
+  requestingFs = true;
+  const el = document.documentElement;
+  try{
+    if(document.fullscreenElement || document.webkitFullscreenElement){
+      hadFullscreen = true;
+      requestingFs = false;
+      return;
+    }
+    const req = el.requestFullscreen
+      ? el.requestFullscreen()
+      : (el.webkitRequestFullscreen ? Promise.resolve(el.webkitRequestFullscreen()) : Promise.resolve());
+    await Promise.race([
+      Promise.resolve(req).catch(function(){}),
+      new Promise(function(r){ setTimeout(r, 700); })
+    ]);
+    if(document.fullscreenElement || document.webkitFullscreenElement) hadFullscreen = true;
+  }catch(e){}
+  setTimeout(function(){ requestingFs = false; }, 600);
+}
+
+function exitFullscreen_(){
+  try{
+    if(document.exitFullscreen && (document.fullscreenElement || document.webkitFullscreenElement)){
+      document.exitFullscreen().catch(function(){});
+    }else if(document.webkitExitFullscreen){
+      document.webkitExitFullscreen();
+    }
+  }catch(e){}
+}
+
+function armProctor_(){
+  if(proctorArmed) return;
+  document.addEventListener("visibilitychange", onProctorSignal_);
+  document.addEventListener("pagehide", onProctorSignal_);
+  document.addEventListener("fullscreenchange", onFullscreenLeave_);
+  document.addEventListener("webkitfullscreenchange", onFullscreenLeave_);
+  document.addEventListener("contextmenu", blockExamChrome_);
+  document.addEventListener("copy", blockExamChrome_);
+  document.addEventListener("cut", blockExamChrome_);
+  document.addEventListener("paste", blockExamChrome_);
+  setTimeout(function(){ proctorArmed = true; }, 900);
+}
+
+function disarmProctor_(){
+  proctorArmed = false;
+  document.removeEventListener("visibilitychange", onProctorSignal_);
+  document.removeEventListener("pagehide", onProctorSignal_);
+  document.removeEventListener("fullscreenchange", onFullscreenLeave_);
+  document.removeEventListener("webkitfullscreenchange", onFullscreenLeave_);
+  document.removeEventListener("contextmenu", blockExamChrome_);
+  document.removeEventListener("copy", blockExamChrome_);
+  document.removeEventListener("cut", blockExamChrome_);
+  document.removeEventListener("paste", blockExamChrome_);
+}
+
+function examInProgress_(){
+  return !!(startedAt && !submitted && !locked);
+}
+
+function blockExamChrome_(e){
+  if(!examInProgress_()) return;
+  e.preventDefault();
+}
+
+function onFullscreenLeave_(){
+  if(!proctorArmed || !examInProgress_() || requestingFs) return;
+  const fs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+  if(fs){
+    hadFullscreen = true;
+    return;
+  }
+  if(hadFullscreen){
+    hadFullscreen = false;
+    handleLeave_();
+  }
+}
+
+function onProctorSignal_(){
+  if(!proctorArmed || !examInProgress_() || requestingFs) return;
+  if(document.visibilityState === "hidden") handleLeave_();
+}
+
+function handleLeave_(){
+  if(!examInProgress_() || leaveGuard) return;
+  leaveGuard = true;
+  setTimeout(function(){ leaveGuard = false; }, 1600);
+  leaveCount += 1;
+  persist();
+  document.getElementById("proctor-modal").classList.add("show");
+}
+
+function resumeAfterLeave(){
+  document.getElementById("proctor-modal").classList.remove("show");
+  enterFullscreen_();
 }
 
 function warnLeave(e){
@@ -600,7 +738,13 @@ function lockTest(timeUp){
 function applyTimedOutCopy(){
   document.getElementById("done-kicker").textContent = "Time is up";
   document.getElementById("done-title").textContent = "This test is now closed";
-  document.getElementById("done-copy").innerHTML = "The 30 minutes are over, so the paper can no longer be answered.<br>Your responses have been recorded. We are sending your score and explanations to your email.";
+  document.getElementById("done-copy").innerHTML = "The 30 minutes are over, so the paper can no longer be answered.<br>Your responses have been recorded. Your score and explanations will be emailed in about an hour.";
+}
+
+function applyLeftPaperCopy(){
+  document.getElementById("done-kicker").textContent = "Paper closed";
+  document.getElementById("done-title").textContent = "This test was closed because you left the screen";
+  document.getElementById("done-copy").innerHTML = "Switching tabs, windows, or apps is not allowed during the paper. Your answers have been recorded as they stood. Your score and explanations will be emailed in about an hour.";
 }
 
 function buildNav(){
@@ -705,6 +849,7 @@ function collectBackground(){
     name: document.getElementById("f-name").value.trim(),
     email: document.getElementById("f-email").value.trim(),
     grade: document.getElementById("f-grade").value,
+    board: document.getElementById("f-board").value,
     school: document.getElementById("f-school").value.trim(),
     bg_transport: transport,
     bg_parents: document.getElementById("b-parents").value.trim(),
@@ -717,7 +862,7 @@ function collectBackground(){
 function persist(){
   const bg = collectBackground();
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
-    answers, cur, startedAt, submitted, locked, timedOut, bg
+    answers, cur, startedAt, submitted, locked, timedOut, leftPaper, leaveCount, bg
   }));
 }
 
@@ -732,10 +877,13 @@ function restore(){
     submitted = !!data.submitted;
     locked = !!data.locked;
     timedOut = !!data.timedOut;
+    leftPaper = !!data.leftPaper;
+    leaveCount = Number(data.leaveCount) || 0;
     if(data.bg){
       document.getElementById("f-name").value = data.bg.name || "";
       document.getElementById("f-email").value = data.bg.email || "";
       document.getElementById("f-grade").value = data.bg.grade || "";
+      document.getElementById("f-board").value = data.bg.board || "";
       document.getElementById("f-school").value = data.bg.school || "";
       document.getElementById("b-parents").value = data.bg.bg_parents || "";
       document.getElementById("b-area").value = data.bg.bg_area || "";
@@ -752,7 +900,8 @@ function restore(){
     }
     if(submitted){
       if(data.bg && data.bg.email) markEmailTaken(data.bg.email);
-      if(timedOut) applyTimedOutCopy();
+      if(leftPaper) applyLeftPaperCopy();
+      else if(timedOut) applyTimedOutCopy();
       show("s-done");
       return;
     }
@@ -775,13 +924,27 @@ function newStudent(){
 
 async function submitTest(auto){
   if(submitted) return;
+  const bgCheck = collectBackground();
+  if(!EMAIL_RE.test(bgCheck.email) || !bgCheck.name || /^student$/i.test(bgCheck.name)){
+    show("s-details");
+    const err = document.getElementById("err-details");
+    err.textContent = /^student$/i.test(bgCheck.name)
+      ? "Please enter your real name, not “student”."
+      : "Email is required. We cannot record this attempt without it.";
+    err.style.display = "block";
+    return;
+  }
   submitted = true;
   locked = true;
   closeModal();
+  const proctorEl = document.getElementById("proctor-modal");
+  if(proctorEl) proctorEl.classList.remove("show");
+  disarmProctor_();
+  exitFullscreen_();
   if(timerId){ clearInterval(timerId); timerId = null; }
   window.removeEventListener("beforeunload", warnLeave);
   document.getElementById("testbar").style.display = "none";
-  if(auto) lockTest(true);
+  if(auto) lockTest(!leftPaper);
   show("s-done");
   persist();
 
@@ -789,22 +952,25 @@ async function submitTest(auto){
   const bg = collectBackground();
   markEmailTaken(bg.email);
   const mail = bg.email || "the address you entered";
-  if(auto){
+  if(leftPaper){
+    applyLeftPaperCopy();
+  } else if(auto){
     applyTimedOutCopy();
   } else {
     document.getElementById("done-kicker").textContent = "Submitted";
     document.getElementById("done-title").textContent = "Your responses have been recorded";
-    document.getElementById("done-copy").innerHTML = "Thank you. We are sending your score, the questions you missed, and the explanations to " + mail + ". Check your inbox and spam in a few minutes. The mark is not shown on this page.";
+    document.getElementById("done-copy").innerHTML = "Thank you. Your score, the questions you missed, and the explanations will be emailed to " + mail + " in about an hour. Check your inbox and spam then. The mark is not shown on this page.";
   }
   const timeUsedMin = Math.round((TEST_MINUTES * 60 - Math.max(remainingSeconds(), 0)) / 6) / 10;
   const payload = {
     version: "finlit-2026-practice",
     feedback: true,
     submitted_at: new Date().toISOString(),
-    role: "student",
     name: bg.name,
     email: bg.email,
     grade: bg.grade,
+    board: bg.board,
+    Board: bg.board,
     school: bg.school,
     transport: bg.bg_transport,
     bg_transport: bg.bg_transport,
@@ -814,7 +980,8 @@ async function submitTest(auto){
     bg_income: bg.bg_income,
     time_used: timeUsedMin + " min",
     time_used_min: timeUsedMin,
-    auto_submitted: auto ? "yes (time up)" : "no",
+    auto_submitted: leftPaper ? "yes (left the paper)" : (auto ? "yes (time up)" : "no"),
+    leave_count: leaveCount,
     score_total: s.total + " / 25",
     score: s.total,
     part_a: s.parts.A,
@@ -830,6 +997,8 @@ async function submitTest(auto){
     payload["q" + (i + 1)] = answers[i] || "blank";
     payload["q" + (i + 1) + "_choice"] = answers[i] || "blank";
   });
+  payload.Email = payload.email;
+  payload.Name = payload.name;
 
   let sent = false;
   if(RESULTS_EMAIL && !RESULTS_EMAIL.startsWith("YOUR_EMAIL")){
