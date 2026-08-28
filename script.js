@@ -119,23 +119,20 @@
     button.disabled = true;
     if (status) status.textContent = "Sending\u2026";
 
-    fetch("https://formsubmit.co/ajax/verushka@theskywardproject.com", {
+    fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { Accept: "application/json" },
       body: new FormData(form)
     })
       .then(function (response) {
-        return response.json().then(function (data) {
-          var ok = response.ok && data && String(data.success) !== "false";
-          if (!ok) throw new Error("Request failed");
-          window.location.href = "thank-you.html";
-        });
+        if (!response.ok) throw new Error("Request failed");
+        window.location.href = "thank-you.html";
       })
       .catch(function () {
         button.disabled = false;
         if (status) {
           status.textContent =
-            "That did not send. Please try again, or write to verushka@theskywardproject.com.";
+            "That did not send. Please try again, or email us directly.";
         }
       });
   });
