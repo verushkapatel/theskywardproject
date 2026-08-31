@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=29">
+<link rel="stylesheet" href="styles.css?v=30">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -41,7 +41,6 @@ document.addEventListener("error", function (event) {
   </div>
   <ul class="site-nav__list" id="menu">
     <li><a href="index.html" aria-current="page">Home</a></li>
-    <li><a href="take-the-test.html">Take the test</a></li>
     <li><a href="mission.html">Mission</a></li>
     <li><a href="finlit-index.html">FinLit Index</a></li>
     <li><a href="dispatches.html">Dispatches</a></li>
@@ -64,6 +63,11 @@ document.addEventListener("error", function (event) {
       <span class="rules" aria-hidden="true"></span>
     </header>
 
+    <aside class="pilot-note wrap" data-reveal>
+      <p class="pilot-note__label">From the editors</p>
+      <p>The first FinLit Index pilot is complete. In a short stretch of time we received more than a hundred responses. Thank you to the students who sat the paper, and to the schools that made room for it. We are reading the results now.</p>
+    </aside>
+
     <div class="front wrap">
       <article class="lead" data-reveal>
         <p class="masthead__lead">Lead Story</p>
@@ -71,7 +75,6 @@ document.addEventListener("error", function (event) {
         <p class="lead__byline">By the editors · 24 August 2026</p>
         <p class="lead__dek">A youth-led research and policy effort on educational equity and money skills. One paper, every grade, every board — written for a sixteen-year-old in Pune or Mumbai.</p>
         <div class="lead__actions">
-          <a class="button button--test" href="take-the-test.html">Take the test</a>
           <a class="lead__more" href="mission.html">Read the mission</a>
         </div>
       </article>
@@ -79,17 +82,10 @@ document.addEventListener("error", function (event) {
         <p class="kicker">In this issue</p>
         <ol class="issue__list">
           <li>
-            <a href="take-the-test.html">
-              <span class="issue__title">Take the test</span>
-              <span class="issue__leaders" aria-hidden="true"></span>
-              <span class="issue__page">p.02</span>
-            </a>
-          </li>
-          <li>
             <a href="mission.html">
               <span class="issue__title">The Mission</span>
               <span class="issue__leaders" aria-hidden="true"></span>
-              <span class="issue__page">p.04</span>
+              <span class="issue__page">p.02</span>
             </a>
           </li>
           <li>
@@ -127,7 +123,7 @@ document.addEventListener("error", function (event) {
       </div>
       <div class="column" data-reveal>
         <p class="kicker">Where we are</p>
-        <p>Pune and Mumbai, 2026. The instrument is written. We are looking for a first pilot across schools of different boards and income groups in both cities.</p>
+        <p>Pune and Mumbai, 2026. The first pilot is complete. We are reading the responses and preparing for the next round of schools.</p>
       </div>
     </div>
   </section>
@@ -165,7 +161,7 @@ document.addEventListener("error", function (event) {
             <img src="assets/verushka.jpg" alt="Verushka Patel" width="800" height="800">
           </button>
           <h3>Verushka Patel</h3>
-          <p class="member__role">Founder · Research Lead</p>
+          <p class="member__role">Founder</p>
           <div class="member__bio" hidden>
             <p>Verushka is a writer and tenth-grader with a growing interest in computer science, finance, and economics. Writing has been an important part of how she expresses her ideas, and she is the author of <cite>Aspiring for the Stars</cite>. She also enjoys coding and exploring how technology can be used to understand and solve real-world problems. Her interest in finance has led her to write two research papers on quantitative finance, while her curiosity about AI, computer science, and finance has encouraged her to complete over 30 certifications across these fields. More than anything, she&rsquo;s someone who can&rsquo;t sit still, and is always looking for the next venture.</p>
           </div>
@@ -176,7 +172,7 @@ document.addEventListener("error", function (event) {
             <img src="assets/prathmesh.jpg" alt="Prathmesh Khurana" width="256" height="256">
           </button>
           <h3>Prathmesh Khurana</h3>
-          <p class="member__role">Co-founder · Partnerships</p>
+          <p class="member__role">Co-founder</p>
           <div class="member__bio" hidden>
             <p>Prathmesh is a 12th grade student at the Dhirubhai Ambani International School. Passionate about finance and financial literacy, he&rsquo;s pursued various projects in the field. His most notable project, DhanSaaskhar, involved his own personally created comic and sessions he undertook, which reached over 100 people and received a lot of positive feedback. He wishes to pursue a career in the field of finance in the future, particularly investments. His depth in this field is seen through his internships at Tata Mutual Fund under the CIO Mr Rahul Singh, and the Entelechy Fund under the co-founder Mrs Megha Sood. His passion in the subject has extended into research on the awareness of the subject among the masses, which led him to develop this project.</p>
           </div>

@@ -9,7 +9,7 @@ you can open and edit in any text editor.
 index.html          Home (masthead, thesis, city plate, three columns, core team)
 mission.html        The Mission
 finlit-index.html   The FinLit Index
-take-the-test.html  Public student landing page for the online paper
+take-the-test.html  Closed-pilot notice (old student link still works)
 test.html           The 27-question practice test (email required)
 dispatches.html     Dispatches (placeholder)
 field-notes.html    Field Notes (placeholder)

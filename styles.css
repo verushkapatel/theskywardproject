@@ -570,6 +570,72 @@ a:hover {
   color: var(--ink);
 }
 
+.pilot-note {
+  padding: 0 0 1.85rem;
+  text-align: center;
+}
+
+.pilot-note__label {
+  font-family: var(--utility);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 0.55rem;
+}
+
+.pilot-note p {
+  margin: 0 auto;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.contact-direct {
+  max-width: 28rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.contact-direct p {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.contact-direct__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.contact-direct__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.contact-direct__list span {
+  font-family: var(--utility);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.contact-direct__list a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .paper-movement {
   font-family: var(--body);
   font-size: 1.02rem;
@@ -1666,10 +1732,15 @@ a:hover {
   }
 
   .article,
-  .form {
+  .form,
+  .contact-direct {
     max-width: 38rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .contact-direct {
+    text-align: left;
   }
 
   .page-head {
