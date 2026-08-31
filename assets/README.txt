@@ -20,3 +20,4 @@ Team photographs
 
 verushka.jpg
 prathmesh.jpg
+amaira.jpg
