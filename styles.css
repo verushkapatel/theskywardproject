@@ -1976,9 +1976,12 @@ body.is-walking main {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
+  width: 100%;
   max-width: 42rem;
   margin: 0 auto;
   padding: env(safe-area-inset-top, 0px) var(--gutter) 0;
+  overflow: hidden;
 }
 
 .walk__top {
@@ -2036,11 +2039,16 @@ body.is-walking main {
   gap: 0;
   list-style: none;
   margin: 0;
-  padding: 0.35rem 0 0;
+  padding: 0.2rem 0 0;
   overflow-x: auto;
   border-bottom: 1px solid var(--rule);
   flex-shrink: 0;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.walk__ticks::-webkit-scrollbar {
+  display: none;
 }
 
 .walk__ticks li {
@@ -2054,11 +2062,11 @@ body.is-walking main {
   border: 0;
   border-bottom: 2px solid transparent;
   background: transparent;
-  padding: 0.55rem 0.45rem 0.5rem;
+  padding: 0.5rem 0.35rem 0.45rem;
   font-family: var(--utility);
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--quiet);
   cursor: pointer;
@@ -2073,8 +2081,9 @@ body.is-walking main {
 .walk__stage {
   flex: 1;
   overflow: auto;
-  padding: 1.6rem 0 1.25rem;
+  padding: 1.15rem 0 1rem;
   text-align: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 .walk-scene {
@@ -2111,11 +2120,11 @@ body.is-walking main {
 .walk-clock {
   font-family: var(--display);
   font-weight: 900;
-  font-size: clamp(3.4rem, 16vw, 6.2rem);
+  font-size: clamp(2.6rem, 14vw, 6.2rem);
   letter-spacing: -0.045em;
   line-height: 0.9;
   color: var(--ink);
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.55rem;
 }
 
 .walk-time {
@@ -2262,6 +2271,7 @@ body.is-walking main {
   font-family: var(--body);
   font-size: 0.95rem;
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .walk-opt.is-pick {
@@ -2315,7 +2325,7 @@ body.is-walking main {
 
 .walk-grid {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   border-top: 1px solid var(--ink);
   border-left: 1px solid var(--ink);
 }
@@ -2550,6 +2560,62 @@ body.is-walking main {
   margin: 1.2rem 0 0;
 }
 
+.walk-mail {
+  text-align: left;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  margin: 0 auto 0.35rem;
+  max-width: 100%;
+}
+
+.walk-mail__head {
+  padding: 0.8rem 0.85rem;
+  border-bottom: 1px solid var(--ink);
+  background: var(--well);
+}
+
+.walk-mail__head p {
+  margin: 0 0 0.3rem;
+  font-size: 0.88rem;
+  word-break: break-word;
+}
+
+.walk-mail__head p:last-child {
+  margin: 0;
+}
+
+.walk-mail__head span {
+  display: inline-block;
+  min-width: 4.1rem;
+  font-family: var(--utility);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.walk-mail__head a {
+  border-bottom: 1px solid var(--rule);
+}
+
+.walk-mail__body {
+  padding: 1.05rem 0.85rem 1.15rem;
+}
+
+.walk-mail h3 {
+  text-align: left;
+}
+
+.walk-mail__bullets {
+  margin: 0 0 0.8rem;
+  padding-left: 1.15rem;
+}
+
+.walk-mail__bullets li {
+  margin: 0 0 0.25rem;
+}
+
 .walk-curtain {
   position: absolute;
   inset: 0;
@@ -2750,14 +2816,18 @@ body.is-walking main {
 .walk__footer {
   display: flex;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 0 max(0.9rem, env(safe-area-inset-bottom, 0px));
+  gap: 0.55rem;
+  padding: 0.65rem 0 max(0.85rem, env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--ink);
   flex-shrink: 0;
 }
 
 .walk__footer .button {
   margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.58rem;
+  padding: 0.48rem 0.7rem;
 }
 
 .walk__footer .button:disabled {
@@ -2779,6 +2849,22 @@ body.is-walking main {
 @media (min-width: 800px) {
   .walk__frame {
     max-width: 58rem;
+  }
+
+  .walk__ticks button {
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    padding: 0.55rem 0.5rem 0.5rem;
+  }
+
+  .walk-grid {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  .walk__footer .button {
+    flex: 0 0 auto;
+    font-size: 0.65rem;
+    padding: 0.5rem 1.15rem;
   }
 
   .partner-reel {
@@ -2814,7 +2900,8 @@ body.is-walking main {
 
   .walk-letter,
   .walk-envelope,
-  .walk-assess {
+  .walk-assess,
+  .walk-mail {
     max-width: 38rem;
     margin-left: auto;
     margin-right: auto;

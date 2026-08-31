@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=33">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -125,10 +125,10 @@ document.addEventListener("error", function (event) {
     </header>
 
     <ol class="walk__ticks" aria-label="Scenes">
-      <li><button type="button" data-walk-jump="0">The sitting</button></li>
-      <li><button type="button" data-walk-jump="1">The paper</button></li>
-      <li><button type="button" data-walk-jump="2">The letter</button></li>
-      <li><button type="button" data-walk-jump="3">The reading</button></li>
+      <li><button type="button" data-walk-jump="0">Sitting</button></li>
+      <li><button type="button" data-walk-jump="1">Paper</button></li>
+      <li><button type="button" data-walk-jump="2">Letter</button></li>
+      <li><button type="button" data-walk-jump="3">Reading</button></li>
       <li><button type="button" data-walk-jump="4">North star</button></li>
     </ol>
 
@@ -139,19 +139,8 @@ document.addEventListener("error", function (event) {
         <p class="walk-clock" data-clock>30:00</p>
         <div class="walk-time" aria-hidden="true"><span data-clock-bar></span></div>
         <h2 class="walk-title">The same thirty minutes for every student.</h2>
-        <p class="walk-dek">Grade 9 or Grade 12. English, Hindi, or Marathi — each version back-translated so the meaning holds. One paper, one key. The mark is never shown on the page.</p>
-        <p class="walk-seat">
-          <button class="button button--enter" type="button" data-start-sitting>The paper is in front of you</button>
-        </p>
+        <p class="walk-dek">One paper, one key. English, Hindi, or Marathi. 27 questions, 25 marks. The mark is never shown on the page.</p>
         <ul class="walk-briefs">
-          <li>
-            <span>The paper</span>
-            <strong>27 questions · 25 marks</strong>
-          </li>
-          <li>
-            <span>The languages</span>
-            <strong>English · Hindi · Marathi</strong>
-          </li>
           <li>
             <span>The room</span>
             <strong>Full screen. Leaving the tab counts as leaving the exam.</strong>
@@ -165,78 +154,71 @@ document.addEventListener("error", function (event) {
 
       <section class="walk-scene" data-scene="1" hidden aria-label="The paper">
         <p class="walk-kicker">II · The paper</p>
-        <p class="walk-dek walk-dek--tight">This is the specimen. Pick an option the way a student would. The note that follows is what the item is doing — the temptation, then the key.</p>
+        <p class="walk-dek walk-dek--tight">Pick an option. The note is the temptation, then the key.</p>
         <div class="walk-parts" data-paper-parts>
           <button type="button" class="is-on" data-part="all">All</button>
-          <button type="button" data-part="A">A · Warm up</button>
-          <button type="button" data-part="B">B · Everyday</button>
-          <button type="button" data-part="C">C · Read carefully</button>
-          <button type="button" data-part="D">D · Quick fire</button>
+          <button type="button" data-part="A">A</button>
+          <button type="button" data-part="B">B</button>
+          <button type="button" data-part="C">C</button>
+          <button type="button" data-part="D">D</button>
         </div>
         <article class="walk-q" data-paper-card></article>
         <div class="walk-qnav">
-          <button class="button" type="button" data-q-prev>Previous question</button>
-          <button class="button" type="button" data-q-next>Next question</button>
+          <button class="button" type="button" data-q-prev>Previous</button>
+          <button class="button" type="button" data-q-next>Next</button>
         </div>
         <div class="walk-grid" data-paper-grid aria-label="Jump to a question"></div>
       </section>
 
       <section class="walk-scene" data-scene="2" hidden aria-label="The letter">
         <p class="walk-kicker">III · The letter</p>
-        <h2 class="walk-title">The mark is not on the website. It arrives by letter.</h2>
-        <ol class="walk-timeline">
-          <li>
-            <span>0 min</span>
-            <p>The student submits, or the timer closes the paper. A row is written. Nothing is shown on screen except that the sitting is recorded.</p>
-          </li>
-          <li>
-            <span>~60 min</span>
-            <p>A letter goes out: the score, each part, what already holds, what to work on, and every miss — the pick in red, the key in green, and why.</p>
-          </li>
-        </ol>
-        <button class="walk-envelope" type="button" data-open-letter aria-expanded="false">
-          <span class="walk-envelope__kicker">Inbox · about an hour later</span>
-          <span class="walk-envelope__from">The Skyward Project</span>
-          <span class="walk-envelope__subject">Your FinLit Index results</span>
-          <span class="walk-envelope__open">Open the letter</span>
-        </button>
-        <div class="walk-letter" data-letter hidden>
-          <p class="walk-letter__mast"><em>The</em> Skyward Project</p>
-          <span class="rules" aria-hidden="true"></span>
-          <p class="walk-letter__kicker">FinLit Index · Results · the letter every student receives</p>
-          <h3>Hello</h3>
-          <p>The greeting uses the student’s own name. The mark is not shown on the website. It is here: the score out of 25, each part, what already holds, what to work on, and every question they missed.</p>
-          <div class="walk-score">
-            <p>Your score</p>
-            <strong>— <span>/ 25</span></strong>
+        <p class="walk-dek walk-dek--tight">About an hour later, this mail goes out. The mark is not on the website.</p>
+        <article class="walk-mail">
+          <header class="walk-mail__head">
+            <p><span>From</span> The Skyward Project</p>
+            <p><span>To</span> <a href="mailto:amaira@theskywardproject.com">amaira@theskywardproject.com</a></p>
+            <p><span>Subject</span> Your FinLit Index results — The Skyward Project</p>
+          </header>
+          <div class="walk-mail__body">
+            <p class="walk-letter__mast"><em>The</em> Skyward Project</p>
+            <span class="rules" aria-hidden="true"></span>
+            <p class="walk-letter__kicker">FinLit Index · Results</p>
+            <h3>Hello Amaira</h3>
+            <p>Thank you for sitting the paper. Your mark is not shown on the website. It is here.</p>
+            <div class="walk-score">
+              <p>Your score</p>
+              <strong>22 <span>/ 25</span></strong>
+            </div>
+            <table class="walk-parts-table">
+              <tbody>
+                <tr><td>Part A · Warm up</td><td>2.5 / 2.5</td></tr>
+                <tr><td>Part B · Everyday</td><td>7 / 7</td></tr>
+                <tr><td>Part C · Read carefully</td><td>10.5 / 12</td></tr>
+                <tr><td>Part D · Market awareness</td><td>2 / 3.5</td></tr>
+              </tbody>
+            </table>
+            <p class="walk-letter__qmeta">Question 1 · Part A · Warm up</p>
+            <p>Meera has ₹800 in pocket money this month. She has four possible expenses:</p>
+            <ul class="walk-mail__bullets">
+              <li>Exam stationery she needs this week (₹150)</li>
+              <li>College application fee due Friday, after which she loses her spot (₹250)</li>
+              <li>A new phone case she has been wanting (₹300)</li>
+              <li>A birthday gift for her best friend next week (₹200)</li>
+            </ul>
+            <p class="walk-letter__prompt">She cannot afford all four. What should she pay for first?</p>
+            <div class="walk-letter__opt">A · The phone case, since it is the one she wants most</div>
+            <div class="walk-letter__opt is-key">B · The application fee, since missing that deadline cannot be reversed <em>Correct</em></div>
+            <div class="walk-letter__opt">C · The birthday gift, so her friend is not upset</div>
+            <div class="walk-letter__opt">D · Split the ₹800 evenly across everything</div>
+            <p><strong class="walk-letter__good">Why B is right.</strong> When money is short, pay first for the cost that cannot be undone. Missing Friday’s application deadline loses the college spot for good.</p>
           </div>
-          <table class="walk-parts-table">
-            <tbody>
-              <tr><td>Part A · Warm up</td><td>/ 2.5</td><td>from their answers</td></tr>
-              <tr><td>Part B · Everyday</td><td>/ 7</td><td>from their answers</td></tr>
-              <tr><td>Part C · Read carefully</td><td>/ 12</td><td>from their answers</td></tr>
-              <tr><td>Part D · Market awareness</td><td>/ 3.5</td><td>from their answers</td></tr>
-            </tbody>
-          </table>
-          <p class="walk-letter__head">How a miss is written</p>
-          <p>On each miss, their pick is in red and the correct option is in green. First we say why their option does not hold. Then we say why the correct option does. Question 14, from the paper:</p>
-          <p class="walk-letter__qmeta">Question 14 · Part C · Read carefully</p>
-          <p>A shop offers a phone on a “zero interest” EMI of ₹4,200 per month for 12 months. The same phone costs ₹45,000 if you pay in cash.</p>
-          <p class="walk-letter__prompt">What is actually true about this offer?</p>
-          <div class="walk-letter__opt is-pick">A · It is genuinely free financing, since no interest is charged <em>Their pick, if they chose this</em></div>
-          <div class="walk-letter__opt is-key">B · The 12 EMIs add up to ₹50,400, which is ₹5,400 more than the cash price <em>Correct</em></div>
-          <div class="walk-letter__opt">C · Paying by EMI is always cheaper, since your cash stays in the bank</div>
-          <div class="walk-letter__opt">D · Both options cost you the same amount in the end</div>
-          <p><strong class="walk-letter__bad">Why A is not right.</strong> The poster says zero interest, but ₹4,200 × 12 = ₹50,400, which is ₹5,400 more than cash. That extra is the cost.</p>
-          <p><strong class="walk-letter__good">Why B is right.</strong> Always multiply. The EMI path costs ₹5,400 extra, whatever the poster says. That extra is often built into a higher EMI price.</p>
-          <p class="walk-letter__foot">The name, the mark, and the misses are the student’s. Schools are never named.</p>
-        </div>
+        </article>
       </section>
 
       <section class="walk-scene" data-scene="3" hidden aria-label="The reading">
         <p class="walk-kicker">IV · The reading</p>
         <h2 class="walk-title">Two assessments. Neither is the score.</h2>
-        <p class="walk-dek">Before the first question, students fill this cover. Name and email are for the result letter only. What follows is how we read the mark.</p>
+        <p class="walk-dek walk-dek--tight">Students fill this cover first. Then we read the mark against board and household.</p>
 
         <article class="walk-assess">
           <p class="walk-assess__n">Assessment 1</p>
@@ -304,7 +286,7 @@ document.addEventListener("error", function (event) {
             </fieldset>
             <fieldset>
               <legend>What is your family's monthly income?</legend>
-              <p class="walk-form__hint">This is to determine the socioeconomic correlation in our research. If you are not certain, or you do not want to disclose it, it is okay to pick Not sure.</p>
+              <p class="walk-form__hint">For the socioeconomic reading. Not sure is allowed.</p>
               <label><input type="radio" name="walk-income" value="₹0 to 25,000">₹0 to 25,000</label>
               <label><input type="radio" name="walk-income" value="₹25,001 to 50,000">₹25,001 to 50,000</label>
               <label><input type="radio" name="walk-income" value="₹50,001 to 1,00,000">₹50,001 to 1,00,000</label>
@@ -348,8 +330,8 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=32"></script>
+<script src="script.js?v=33"></script>
 <script src="walk-data.js?v=1"></script>
-<script src="walk.js?v=2"></script>
+<script src="walk.js?v=3"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
   };
   var SCENES = 5;
   var FOLIO = ["The sitting", "The paper", "The letter", "The reading", "North star"];
-  var NEXT = ["Continue to the paper", "Continue to the letter", "Continue to the reading", "Continue", "Write to us"];
+  var NEXT = ["Continue", "Continue", "Continue", "Continue", "Continue"];
 
   var paper = window.SKYWARD_PAPER || [];
   var scene = 0;
@@ -35,7 +35,6 @@
   var letterEl = walk.querySelector("[data-letter]");
   var envelopeBtn = walk.querySelector("[data-open-letter]");
   var curtain = walk.querySelector("[data-curtain]");
-  var startSit = walk.querySelector("[data-start-sitting]");
 
   function esc(s) {
     return String(s || "").replace(/[&<>"']/g, function (c) {
@@ -118,17 +117,12 @@
     sittingStarted = false;
     if (clockEl) clockEl.textContent = "30:00";
     if (barEl) barEl.style.transform = "scaleX(1)";
-    if (startSit) {
-      startSit.hidden = false;
-      startSit.textContent = "The paper is in front of you";
-    }
   }
 
   function startClock() {
     stopClock();
     if (!clockEl) return;
     sittingStarted = true;
-    if (startSit) startSit.hidden = true;
     var seconds = 30 * 60;
     clockEl.textContent = "30:00";
     if (barEl) barEl.style.transform = "scaleX(1)";
@@ -167,11 +161,8 @@
     prevBtn.disabled = scene === 0;
     nextBtn.textContent = NEXT[scene];
     nextBtn.hidden = scene === SCENES - 1;
-    if (scene === 0) {
-      if (!sittingStarted) resetClockFace();
-    } else {
-      stopClock();
-    }
+    if (scene === 0) startClock();
+    else stopClock();
     if (scene === 1) renderQuestion();
     walk.querySelector(".walk__stage").scrollTop = 0;
   }
@@ -223,12 +214,6 @@
   });
 
   walk.querySelector("[data-walk-exit]").addEventListener("click", closeWalk);
-
-  if (startSit) {
-    startSit.addEventListener("click", function () {
-      startClock();
-    });
-  }
 
   walk.querySelectorAll('input[name="walk-device"]').forEach(function (box) {
     box.addEventListener("change", function () {
@@ -295,14 +280,17 @@
     revealOption(btn.getAttribute("data-opt"));
   });
 
-  envelopeBtn.addEventListener("click", function () {
-    var open = letterEl.hidden;
-    letterEl.hidden = !open;
-    envelopeBtn.classList.toggle("is-open", open);
-    envelopeBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    envelopeBtn.querySelector(".walk-envelope__open").textContent = open ? "Close the letter" : "Open the letter";
-    if (open) letterEl.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
-  });
+  if (envelopeBtn && letterEl) {
+    envelopeBtn.addEventListener("click", function () {
+      var open = letterEl.hidden;
+      letterEl.hidden = !open;
+      envelopeBtn.classList.toggle("is-open", open);
+      envelopeBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      var label = envelopeBtn.querySelector(".walk-envelope__open");
+      if (label) label.textContent = open ? "Close the letter" : "Open the letter";
+      if (open) letterEl.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
 
   document.addEventListener("keydown", function (event) {
     if (walk.hidden) return;
