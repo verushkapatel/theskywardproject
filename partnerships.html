@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=32">
 <script>
 document.addEventListener("error", function (event) {
   var el = event.target;
@@ -60,13 +60,13 @@ document.addEventListener("error", function (event) {
 
   <article class="article wrap">
     <section data-reveal>
-      <p class="lede">This is not a brochure. It is a short walk through the instrument from the first pilot: how the sitting is run, the full paper, the letter that follows about an hour later, and the household and board reading that gives a mark its meaning.</p>
+      <p class="lede">This is the instrument, from the inside. You will sit what they sit, fill what they fill, and open the letter they receive. Then you will see why a mark is never read alone — and what the work is for.</p>
     </section>
   </article>
 
   <div class="wrap partner-enter" data-reveal>
     <button class="button button--enter" type="button" data-enter-walk="0">Enter the visualisation</button>
-    <p class="partner-enter__note">Four scenes. You can leave at any time.</p>
+    <p class="partner-enter__note">Five scenes. You can leave at any time.</p>
   </div>
 
   <ol class="partner-reel wrap" data-reveal>
@@ -95,7 +95,7 @@ document.addEventListener("error", function (event) {
       <button type="button" data-enter-walk="3">
         <span class="partner-reel__n">IV</span>
         <span class="partner-reel__title">The reading</span>
-        <span class="partner-reel__dek">Board, household, and a mark that is never read alone.</span>
+        <span class="partner-reel__dek">The real cover page. Board, then household. Why we ask.</span>
       </button>
     </li>
   </ol>
@@ -103,13 +103,18 @@ document.addEventListener("error", function (event) {
   <article class="article wrap">
     <section data-reveal>
       <p class="kicker">After you have seen it</p>
-      <p>The first pilot is complete. The next round needs partners who can open classrooms across boards and income groups, not only the rooms that already teach this. When you have walked through the instrument, write to us.</p>
+      <p>When you have walked it, the last scene is the north star: personalised support toward financial independence for students in Grades 9 to 12 who were not handed that education. If that is your work, write to us.</p>
       <p class="footnote"><a href="contact.html?subject=partnership">Write about a partnership</a></p>
     </section>
   </article>
 </main>
 
 <div class="walk" data-walk hidden>
+  <div class="walk-curtain" data-curtain hidden>
+    <p class="walk-curtain__folio">Vol. I · Pune &amp; Mumbai · 2026</p>
+    <p class="walk-curtain__mark"><em>The</em> Skyward Project</p>
+    <p class="walk-curtain__line">You are about to sit the Index from the inside.</p>
+  </div>
   <div class="walk__frame">
     <header class="walk__top">
       <p class="walk__folio">
@@ -124,7 +129,7 @@ document.addEventListener("error", function (event) {
       <li><button type="button" data-walk-jump="1">The paper</button></li>
       <li><button type="button" data-walk-jump="2">The letter</button></li>
       <li><button type="button" data-walk-jump="3">The reading</button></li>
-      <li><button type="button" data-walk-jump="4">Afterward</button></li>
+      <li><button type="button" data-walk-jump="4">North star</button></li>
     </ol>
 
     <div class="walk__stage">
@@ -135,6 +140,9 @@ document.addEventListener("error", function (event) {
         <div class="walk-time" aria-hidden="true"><span data-clock-bar></span></div>
         <h2 class="walk-title">The same thirty minutes for every student.</h2>
         <p class="walk-dek">Grade 9 or Grade 12. English, Hindi, or Marathi — each version back-translated so the meaning holds. One paper, one key. The mark is never shown on the page.</p>
+        <p class="walk-seat">
+          <button class="button button--enter" type="button" data-start-sitting>The paper is in front of you</button>
+        </p>
         <ul class="walk-briefs">
           <li>
             <span>The paper</span>
@@ -195,88 +203,131 @@ document.addEventListener("error", function (event) {
         <div class="walk-letter" data-letter hidden>
           <p class="walk-letter__mast"><em>The</em> Skyward Project</p>
           <span class="rules" aria-hidden="true"></span>
-          <p class="walk-letter__kicker">FinLit Index · Results · Composite example</p>
-          <h3>Hello Riya</h3>
-          <p>Thank you for sitting the paper. Your mark is not shown on the website. It is here, with a reading of what you already do well, what to work on, and every question you missed.</p>
+          <p class="walk-letter__kicker">FinLit Index · Results · the letter every student receives</p>
+          <h3>Hello</h3>
+          <p>The greeting uses the student’s own name. The mark is not shown on the website. It is here: the score out of 25, each part, what already holds, what to work on, and every question they missed.</p>
           <div class="walk-score">
             <p>Your score</p>
-            <strong>16.5 <span>/ 25</span></strong>
+            <strong>— <span>/ 25</span></strong>
           </div>
           <table class="walk-parts-table">
             <tbody>
-              <tr><td>Part A · Warm up</td><td>2 / 2.5</td><td>Strong</td></tr>
-              <tr><td>Part B · Everyday</td><td>6 / 7</td><td>Strong</td></tr>
-              <tr><td>Part C · Read carefully</td><td>7.5 / 12</td><td>Work on this</td></tr>
-              <tr><td>Part D · Market awareness</td><td>1 / 3.5</td><td>Work on this</td></tr>
+              <tr><td>Part A · Warm up</td><td>/ 2.5</td><td>from their answers</td></tr>
+              <tr><td>Part B · Everyday</td><td>/ 7</td><td>from their answers</td></tr>
+              <tr><td>Part C · Read carefully</td><td>/ 12</td><td>from their answers</td></tr>
+              <tr><td>Part D · Market awareness</td><td>/ 3.5</td><td>from their answers</td></tr>
             </tbody>
           </table>
-          <p class="walk-letter__head">What you already do well</p>
-          <p>You can take a money idea and apply it to a real situation: inflation, compounding, insurance, and not putting everything on one tip.</p>
-          <p class="walk-letter__head">Where you are weaker</p>
-          <p>Part C is written so every option sounds fair at first. Slow down, multiply, and ask what still holds if the next few years go badly. Learn the headline market facts. The “winner” changes when the clock is two years instead of thirty.</p>
-          <p class="walk-letter__head">A miss, as the student sees it</p>
+          <p class="walk-letter__head">How a miss is written</p>
+          <p>On each miss, their pick is in red and the correct option is in green. First we say why their option does not hold. Then we say why the correct option does. Question 14, from the paper:</p>
           <p class="walk-letter__qmeta">Question 14 · Part C · Read carefully</p>
           <p>A shop offers a phone on a “zero interest” EMI of ₹4,200 per month for 12 months. The same phone costs ₹45,000 if you pay in cash.</p>
           <p class="walk-letter__prompt">What is actually true about this offer?</p>
-          <div class="walk-letter__opt is-pick">A · It is genuinely free financing, since no interest is charged <em>You picked this</em></div>
+          <div class="walk-letter__opt is-pick">A · It is genuinely free financing, since no interest is charged <em>Their pick, if they chose this</em></div>
           <div class="walk-letter__opt is-key">B · The 12 EMIs add up to ₹50,400, which is ₹5,400 more than the cash price <em>Correct</em></div>
           <div class="walk-letter__opt">C · Paying by EMI is always cheaper, since your cash stays in the bank</div>
           <div class="walk-letter__opt">D · Both options cost you the same amount in the end</div>
           <p><strong class="walk-letter__bad">Why A is not right.</strong> The poster says zero interest, but ₹4,200 × 12 = ₹50,400, which is ₹5,400 more than cash. That extra is the cost.</p>
           <p><strong class="walk-letter__good">Why B is right.</strong> Always multiply. The EMI path costs ₹5,400 extra, whatever the poster says. That extra is often built into a higher EMI price.</p>
-          <p class="walk-letter__foot">A composite letter, using a made-up student and a typical miss. Real letters use the student’s own answers. Schools are never named.</p>
+          <p class="walk-letter__foot">The name, the mark, and the misses are the student’s. Schools are never named.</p>
         </div>
       </section>
 
       <section class="walk-scene" data-scene="3" hidden aria-label="The reading">
         <p class="walk-kicker">IV · The reading</p>
-        <h2 class="walk-title">A mark without a household is only a number.</h2>
-        <p class="walk-dek">Before the first question, a short cover page. No name on the research sheet — an ID code, the board, and a handful of household facts. Together they let us read every result in context.</p>
-        <div class="walk-cover">
-          <p class="walk-cover__label">Cover page · not part of the score</p>
-          <ul>
-            <li><span>How they come to school</span> Walk · bus · family car · public transport</li>
-            <li><span>What their parents do</span> Occupation, in their own words</li>
-            <li><span>Where they live</span> Area only. No address.</li>
-            <li><span>What they own</span> Phone, tablet, laptop — or none of these</li>
-            <li><span>Household income</span> Bands, including “not sure”</li>
-          </ul>
-          <p class="walk-cover__note">Those answers form a socioeconomic reading, in the spirit of a Kuppuswamy index, without putting a name on the sheet. Board is recorded separately, and recovered from the school when it is missing, so ICSE, CBSE, IGCSE, and IB can be compared on the same paper.</p>
-        </div>
-        <div class="walk-profiles" data-profiles>
-          <button type="button" class="is-on" data-profile="a">
-            <span>Student A</span>
-            <strong>16.5 / 25</strong>
-            <em>Grade 11 · ICSE · ₹2,50,001 or above</em>
-          </button>
-          <button type="button" data-profile="b">
-            <span>Student B</span>
-            <strong>16.5 / 25</strong>
-            <em>Grade 11 · CBSE · ₹0 to 25,000</em>
-          </button>
-        </div>
-        <p class="walk-read" data-profile-copy>The same mark. An ICSE household in the highest income band. On its own, 16.5 looks like a mid-paper sitting. Next to Student B, it is the beginning of a comparison the Index exists to make.</p>
-        <table class="walk-compare">
-          <caption>How a round is read. Specimen grouping, not the pilot results.</caption>
-          <thead>
-            <tr><th>Axis</th><th>What we hold</th><th>What we never do</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Board</td><td>ICSE · CBSE · IGCSE · IB, on one key</td><td>Name or rank a school</td></tr>
-            <tr><td>Income</td><td>Five bands, plus “not sure”</td><td>Publish a cell too small to be fair</td></tr>
-            <tr><td>Grade</td><td>9 through 12, same paper</td><td>Give Grade 12 an easier script</td></tr>
-            <tr><td>Language</td><td>English, Hindi, Marathi</td><td>Treat a translation as a different test</td></tr>
-          </tbody>
-        </table>
+        <h2 class="walk-title">Two assessments. Neither is the score.</h2>
+        <p class="walk-dek">Before the first question, students fill this cover. Name and email are for the result letter only. What follows is how we read the mark.</p>
+
+        <article class="walk-assess">
+          <p class="walk-assess__n">Assessment 1</p>
+          <h3>Board</h3>
+          <div class="walk-form">
+            <div class="walk-form__row">
+              <label>
+                Grade
+                <select>
+                  <option value="">Select</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
+              </label>
+              <label>
+                Board
+                <select>
+                  <option value="">Select</option>
+                  <option>ICSE</option>
+                  <option>CBSE</option>
+                  <option>IGCSE</option>
+                  <option>IB</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              School
+              <input type="text" name="walk-school" autocomplete="off">
+            </label>
+          </div>
+          <p class="walk-assess__why"><strong>Why.</strong> One paper, one key, every board. We compare ICSE, CBSE, IGCSE, and IB. If board is missing we recover it from the school name. We never name or rank a school.</p>
+        </article>
+
+        <article class="walk-assess">
+          <p class="walk-assess__n">Assessment 2</p>
+          <h3>Context</h3>
+          <p class="walk-form__note">This is not part of your score. It helps us understand the results across different backgrounds. Your answers stay private.</p>
+          <div class="walk-form">
+            <fieldset>
+              <legend>How do you usually come to school?</legend>
+              <label><input type="radio" name="walk-transport" value="Walk">Walk</label>
+              <label><input type="radio" name="walk-transport" value="Bicycle">Bicycle</label>
+              <label><input type="radio" name="walk-transport" value="School bus">School bus</label>
+              <label><input type="radio" name="walk-transport" value="Public bus, PMT, or rickshaw">Public bus, PMT, or rickshaw</label>
+              <label><input type="radio" name="walk-transport" value="Family car or two wheeler">Family car or two wheeler</label>
+              <label><input type="radio" name="walk-transport" value="Auto or cab">Auto or cab</label>
+              <label><input type="radio" name="walk-transport" value="Other">Other</label>
+            </fieldset>
+            <label>
+              What do your parents do for a living?
+              <input type="text" name="walk-parents" autocomplete="off">
+            </label>
+            <label>
+              Which area do you live in?
+              <input type="text" name="walk-area" autocomplete="off">
+            </label>
+            <fieldset>
+              <legend>Which of these do you personally own?</legend>
+              <label><input type="checkbox" name="walk-device" value="Smartphone">Smartphone</label>
+              <label><input type="checkbox" name="walk-device" value="Tablet">Tablet</label>
+              <label><input type="checkbox" name="walk-device" value="Laptop">Laptop</label>
+              <label><input type="checkbox" name="walk-device" value="None of these">None of these</label>
+            </fieldset>
+            <fieldset>
+              <legend>What is your family's monthly income?</legend>
+              <p class="walk-form__hint">This is to determine the socioeconomic correlation in our research. If you are not certain, or you do not want to disclose it, it is okay to pick Not sure.</p>
+              <label><input type="radio" name="walk-income" value="₹0 to 25,000">₹0 to 25,000</label>
+              <label><input type="radio" name="walk-income" value="₹25,001 to 50,000">₹25,001 to 50,000</label>
+              <label><input type="radio" name="walk-income" value="₹50,001 to 1,00,000">₹50,001 to 1,00,000</label>
+              <label><input type="radio" name="walk-income" value="₹1,00,001 to 2,50,000">₹1,00,001 to 2,50,000</label>
+              <label><input type="radio" name="walk-income" value="₹2,50,001 or above">₹2,50,001 or above</label>
+              <label><input type="radio" name="walk-income" value="Not sure">Not sure</label>
+            </fieldset>
+          </div>
+          <p class="walk-assess__why"><strong>Why.</strong> Transport, parents’ work, area, devices, and income are how we read a mark against a household. None of it changes the score. Without it, a gap looks like ability. With it, we can see who was taught what, and from where.</p>
+        </article>
       </section>
 
-      <section class="walk-scene" data-scene="4" hidden aria-label="Afterward">
-        <p class="walk-kicker">After the paper</p>
-        <h2 class="walk-title">The next round needs rooms we do not yet have.</h2>
-        <p class="walk-dek">The first pilot is complete. More than a hundred students sat this paper in a short stretch of time. What we still need is partners who can open classrooms across boards and incomes — government, municipal, aided, low-fee, and private — so the comparison is the study, not an accident of who was easy to reach.</p>
-        <p class="walk-dek">If that is your work, walk back through any scene, then write to us.</p>
+      <section class="walk-scene" data-scene="4" hidden aria-label="North star">
+        <p class="walk-kicker">North star</p>
+        <h2 class="walk-title">The paper shows the gap. The work is what we do with it.</h2>
+        <p class="walk-dek">Our north star is personalised, customised support toward financial independence for students in Grades 9 to 12 who were not handed that education — from every board, every kind of school, every walk of life.</p>
+        <div class="walk-star">
+          <p>Not a lecture for the already-advantaged. Not one booklet for everyone. Help that fits the student in front of us: how they borrow, how they save, how they are asked to decide, and what nobody has yet sat down and explained.</p>
+          <p>The first pilot is complete. More than a hundred students sat this paper in a short stretch of time. The instrument works. What we cannot do alone is reach the rooms where this would actually change a life.</p>
+          <p>If you can open those rooms — if your work is with young people who should not have to learn money the hard way — we should build the next round together.</p>
+        </div>
         <div class="walk-close">
-          <a class="button button--enter" href="contact.html?subject=partnership">Write about a partnership</a>
+          <a class="button button--enter" href="contact.html?subject=partnership">Build the next round with us</a>
           <p><a href="mailto:verushka@theskywardproject.com">verushka@</a> · <a href="mailto:prathmesh@theskywardproject.com">prathmesh@</a> · <a href="mailto:amaira@theskywardproject.com">amaira@theskywardproject.com</a></p>
         </div>
       </section>
@@ -297,8 +348,8 @@ document.addEventListener("error", function (event) {
   </div>
 </footer>
 
-<script src="script.js?v=31"></script>
+<script src="script.js?v=32"></script>
 <script src="walk-data.js?v=1"></script>
-<script src="walk.js?v=1"></script>
+<script src="walk.js?v=2"></script>
 </body>
 </html>

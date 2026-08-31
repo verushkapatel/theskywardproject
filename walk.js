@@ -12,12 +12,8 @@
     D: "Part D · Quick fire on market awareness"
   };
   var SCENES = 5;
-  var FOLIO = ["The sitting", "The paper", "The letter", "The reading", "Afterward"];
+  var FOLIO = ["The sitting", "The paper", "The letter", "The reading", "North star"];
   var NEXT = ["Continue to the paper", "Continue to the letter", "Continue to the reading", "Continue", "Write to us"];
-  var PROFILE = {
-    a: "The same mark. An ICSE household in the highest income band. On its own, 16.5 looks like a mid-paper sitting. Next to Student B, it is the beginning of a comparison the Index exists to make.",
-    b: "The same 16.5. A CBSE household in the lowest income band. The paper did not change. The household did. That is the reading: not who is ‘better’, but who was taught what, and from where."
-  };
 
   var paper = window.SKYWARD_PAPER || [];
   var scene = 0;
@@ -25,6 +21,8 @@
   var partFilter = "all";
   var lastFocus = null;
   var clockTimer = null;
+  var curtainTimer = null;
+  var sittingStarted = false;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var folioEl = walk.querySelector("[data-walk-folio]");
@@ -36,7 +34,8 @@
   var barEl = walk.querySelector("[data-clock-bar]");
   var letterEl = walk.querySelector("[data-letter]");
   var envelopeBtn = walk.querySelector("[data-open-letter]");
-  var profileCopy = walk.querySelector("[data-profile-copy]");
+  var curtain = walk.querySelector("[data-curtain]");
+  var startSit = walk.querySelector("[data-start-sitting]");
 
   function esc(s) {
     return String(s || "").replace(/[&<>"']/g, function (c) {
@@ -114,9 +113,22 @@
     note.innerHTML = "<p class=\"walk-note__kicker\">" + esc(head) + "</p><p>" + esc(body) + "</p>";
   }
 
+  function resetClockFace() {
+    stopClock();
+    sittingStarted = false;
+    if (clockEl) clockEl.textContent = "30:00";
+    if (barEl) barEl.style.transform = "scaleX(1)";
+    if (startSit) {
+      startSit.hidden = false;
+      startSit.textContent = "The paper is in front of you";
+    }
+  }
+
   function startClock() {
     stopClock();
     if (!clockEl) return;
+    sittingStarted = true;
+    if (startSit) startSit.hidden = true;
     var seconds = 30 * 60;
     clockEl.textContent = "30:00";
     if (barEl) barEl.style.transform = "scaleX(1)";
@@ -155,10 +167,21 @@
     prevBtn.disabled = scene === 0;
     nextBtn.textContent = NEXT[scene];
     nextBtn.hidden = scene === SCENES - 1;
-    if (scene === 0) startClock();
-    else stopClock();
+    if (scene === 0) {
+      if (!sittingStarted) resetClockFace();
+    } else {
+      stopClock();
+    }
     if (scene === 1) renderQuestion();
     walk.querySelector(".walk__stage").scrollTop = 0;
+  }
+
+  function hideCurtain() {
+    if (curtainTimer) {
+      clearTimeout(curtainTimer);
+      curtainTimer = null;
+    }
+    if (curtain) curtain.hidden = true;
   }
 
   function openWalk(start) {
@@ -167,12 +190,25 @@
     document.body.classList.add("is-walking");
     document.body.style.overflow = "hidden";
     if (history.replaceState) history.replaceState(null, "", "#visualisation");
-    setScene(typeof start === "number" ? start : 0);
+    var begin = typeof start === "number" ? start : 0;
+    hideCurtain();
+    if (begin === 0 && !reduceMotion && curtain) {
+      curtain.hidden = false;
+      curtainTimer = setTimeout(function () {
+        hideCurtain();
+        setScene(0);
+        nextBtn.focus();
+      }, 1700);
+      return;
+    }
+    setScene(begin);
     nextBtn.focus();
   }
 
   function closeWalk() {
+    hideCurtain();
     stopClock();
+    sittingStarted = false;
     walk.hidden = true;
     document.body.classList.remove("is-walking");
     document.body.style.overflow = "";
@@ -187,6 +223,27 @@
   });
 
   walk.querySelector("[data-walk-exit]").addEventListener("click", closeWalk);
+
+  if (startSit) {
+    startSit.addEventListener("click", function () {
+      startClock();
+    });
+  }
+
+  walk.querySelectorAll('input[name="walk-device"]').forEach(function (box) {
+    box.addEventListener("change", function () {
+      var boxes = walk.querySelectorAll('input[name="walk-device"]');
+      if (box.value === "None of these" && box.checked) {
+        boxes.forEach(function (b) {
+          if (b.value !== "None of these") b.checked = false;
+        });
+      } else if (box.checked) {
+        boxes.forEach(function (b) {
+          if (b.value === "None of these") b.checked = false;
+        });
+      }
+    });
+  });
 
   prevBtn.addEventListener("click", function () {
     setScene(scene - 1);
@@ -245,15 +302,6 @@
     envelopeBtn.setAttribute("aria-expanded", open ? "true" : "false");
     envelopeBtn.querySelector(".walk-envelope__open").textContent = open ? "Close the letter" : "Open the letter";
     if (open) letterEl.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
-  });
-
-  walk.querySelector("[data-profiles]").addEventListener("click", function (event) {
-    var btn = event.target.closest("[data-profile]");
-    if (!btn) return;
-    walk.querySelectorAll("[data-profile]").forEach(function (el) {
-      el.classList.toggle("is-on", el === btn);
-    });
-    profileCopy.textContent = PROFILE[btn.getAttribute("data-profile")];
   });
 
   document.addEventListener("keydown", function (event) {

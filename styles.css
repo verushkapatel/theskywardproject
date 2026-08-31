@@ -2550,123 +2550,183 @@ body.is-walking main {
   margin: 1.2rem 0 0;
 }
 
-.walk-cover {
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding: 1.15rem 0.1rem 1.2rem;
-  margin: 0 0 1.4rem;
-  text-align: center;
-}
-
-.walk-cover ul {
-  list-style: none;
-  margin: 0 0 1rem;
-  padding: 0;
-}
-
-.walk-cover li {
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--rule);
-  font-size: 0.95rem;
-}
-
-.walk-cover li span {
-  display: block;
-  font-family: var(--utility);
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--quiet);
-  margin-bottom: 0.2rem;
-}
-
-.walk-cover__note {
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--quiet);
-}
-
-.walk-profiles {
-  display: grid;
-  gap: 0.65rem;
-  margin: 0 0 1rem;
-}
-
-.walk-profiles button {
-  border: 1px solid var(--ink);
+.walk-curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
   background: var(--paper);
-  color: var(--ink);
-  padding: 1rem 0.8rem;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
   text-align: center;
 }
 
-.walk-profiles button.is-on {
-  background: var(--ink);
-  color: var(--paper);
+.walk-curtain[hidden] {
+  display: none;
 }
 
-.walk-profiles span {
-  display: block;
+.walk-curtain__folio {
   font-family: var(--utility);
-  font-size: 0.55rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.walk-profiles strong {
-  display: block;
-  font-family: var(--display);
-  font-size: 1.7rem;
-  margin-bottom: 0.2rem;
-}
-
-.walk-profiles em {
-  font-family: var(--body);
-  font-style: italic;
-  font-size: 0.88rem;
-}
-
-.walk-read {
-  max-width: 28rem;
-  margin: 0 auto 1.5rem;
-}
-
-.walk-compare {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-  text-align: left;
-  margin: 0 0 0.5rem;
-}
-
-.walk-compare caption {
-  font-family: var(--utility);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--quiet);
-  caption-side: bottom;
-  padding-top: 0.7rem;
-  text-align: center;
-}
-
-.walk-compare th,
-.walk-compare td {
-  border-bottom: 1px solid var(--rule);
-  padding: 0.55rem 0.35rem;
-  vertical-align: top;
-}
-
-.walk-compare th {
-  font-family: var(--utility);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.58rem;
   font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--quiet);
+  margin: 0 0 1.1rem;
+}
+
+.walk-curtain__mark {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 7vw, 3.1rem);
+  font-weight: 900;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  line-height: 1.05;
+}
+
+.walk-curtain__line {
+  max-width: 18rem;
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.walk-seat {
+  margin: 0 0 1.6rem;
+}
+
+.walk-assess {
+  text-align: left;
+  border-top: 1px solid var(--ink);
+  padding: 1.35rem 0 1.6rem;
+  margin: 0 auto 0.35rem;
+  max-width: 32rem;
+}
+
+.walk-assess__n {
+  font-family: var(--utility);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+
+.walk-assess h3 {
+  font-size: 1.45rem;
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.walk-assess__why {
+  margin: 1.05rem 0 0;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.walk-form {
+  display: grid;
+  gap: 1.05rem;
+}
+
+.walk-form__row {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.walk-form label,
+.walk-form legend {
+  display: block;
+  font-family: var(--utility);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: left;
+}
+
+.walk-form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.walk-form fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  border: 1px solid var(--rule);
+  padding: 0.65rem 0.7rem;
+  cursor: pointer;
+}
+
+.walk-form input[type="text"],
+.walk-form select {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  font-family: var(--body);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.55rem 0.1rem;
+}
+
+.walk-form fieldset label:has(input:checked) {
+  border-color: var(--ink);
+  background: var(--well);
+}
+
+.walk-form__note,
+.walk-form__hint {
+  font-size: 0.88rem;
+  color: var(--quiet);
+  margin: 0 0 0.85rem;
+  text-align: left;
+}
+
+.walk-form__hint {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--body);
+  font-weight: 400;
+}
+
+.walk-star {
+  max-width: 32rem;
+  margin: 0 auto 0.5rem;
+  padding: 1.4rem 0 1.5rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  text-align: center;
+}
+
+.walk-star p:first-child {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--ink);
 }
 
 .walk-close {
@@ -2753,17 +2813,19 @@ body.is-walking main {
   }
 
   .walk-letter,
-  .walk-envelope {
+  .walk-envelope,
+  .walk-assess {
     max-width: 38rem;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .walk-profiles {
+  .walk-form__row {
     grid-template-columns: 1fr 1fr;
-    max-width: 38rem;
-    margin-left: auto;
-    margin-right: auto;
+  }
+
+  .walk-star {
+    max-width: 36rem;
   }
 
   .walk-qnav .button::after {
@@ -2795,6 +2857,10 @@ body.is-walking main {
   }
 
   .walk-scene {
+    animation: none;
+  }
+
+  .walk-curtain {
     animation: none;
   }
 }
