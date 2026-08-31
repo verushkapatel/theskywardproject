@@ -110,6 +110,12 @@
   var form = document.querySelector("[data-contact-form]");
   if (!form) return;
 
+  var subject = new URLSearchParams(window.location.search).get("subject");
+  var enquiry = form.querySelector("#enquiry_type");
+  if (enquiry && (subject === "partnership" || subject === "partners")) {
+    enquiry.value = "Partnership or pilot site";
+  }
+
   var status = form.querySelector("[data-form-status]");
   var button = form.querySelector("button[type=submit]");
 

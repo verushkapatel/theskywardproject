@@ -9,12 +9,15 @@ you can open and edit in any text editor.
 index.html          Home (masthead, thesis, city plate, three columns, core team)
 mission.html        The Mission
 finlit-index.html   The FinLit Index
+partnerships.html   Prospective partners: visualisation of the sitting, paper, letter, reading
 take-the-test.html  Closed-pilot notice (old student link still works)
 test.html           The 27-question practice test (email required)
 dispatches.html     Dispatches (placeholder)
 field-notes.html    Field Notes (placeholder)
 contact.html        Contact form
 thank-you.html      Shown after the form is sent
+walk.js            Partnerships visualisation
+walk-data.js       The 27-question specimen used in that visualisation
 styles.css          All styling
 script.js           Navigation, scroll effects, contact form
 assets/             Emblem, plates, photos, favicon
