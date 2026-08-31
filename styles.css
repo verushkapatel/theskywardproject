@@ -433,6 +433,10 @@ a:hover {
   opacity: 1;
 }
 
+.button[hidden] {
+  display: none !important;
+}
+
 .button--test,
 .button--enter {
   font-size: 0.84rem;
@@ -2627,6 +2631,13 @@ body.is-walking main {
   justify-content: center;
   padding: var(--gutter);
   text-align: center;
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.walk-curtain.is-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .walk-curtain[hidden] {
@@ -2949,5 +2960,6 @@ body.is-walking main {
 
   .walk-curtain {
     animation: none;
+    transition: none;
   }
 }

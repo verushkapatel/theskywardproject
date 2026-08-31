@@ -13,7 +13,6 @@
   };
   var SCENES = 5;
   var FOLIO = ["The sitting", "The paper", "The letter", "The reading", "North star"];
-  var NEXT = ["Continue", "Continue", "Continue", "Continue", "Continue"];
 
   var paper = window.SKYWARD_PAPER || [];
   var scene = 0;
@@ -101,12 +100,11 @@
     var head;
     var body;
     if (letter === q.key) {
-      head = "The key.";
+      head = "Correct.";
       body = q.why;
     } else {
-      head = "The temptation.";
-      body = (q.wrong && q.wrong[letter]) ? q.wrong[letter] : "This option is designed to sound fair. It does not hold.";
-      body += " " + q.why;
+      head = "Not this one.";
+      body = (q.wrong && q.wrong[letter]) ? q.wrong[letter] : "This option does not hold.";
     }
     note.hidden = false;
     note.innerHTML = "<p class=\"walk-note__kicker\">" + esc(head) + "</p><p>" + esc(body) + "</p>";
@@ -119,35 +117,42 @@
     if (barEl) barEl.style.transform = "scaleX(1)";
   }
 
-  function startClock() {
-    stopClock();
-    if (!clockEl) return;
-    sittingStarted = true;
-    var seconds = 30 * 60;
-    clockEl.textContent = "30:00";
-    if (barEl) barEl.style.transform = "scaleX(1)";
-    if (reduceMotion) return;
-    var start = Date.now();
-    var span = 9000;
-    clockTimer = setInterval(function () {
-      var t = Math.min(1, (Date.now() - start) / span);
-      var left = seconds - Math.round(t * 18);
-      var m = Math.floor(left / 60);
-      var s = left % 60;
-      clockEl.textContent = m + ":" + String(s).padStart(2, "0");
-      if (barEl) barEl.style.transform = "scaleX(" + (1 - t * 0.12) + ")";
-      if (t >= 1) stopClock();
-    }, 80);
-  }
-
   function stopClock() {
     if (clockTimer) {
-      clearInterval(clockTimer);
+      clearTimeout(clockTimer);
       clockTimer = null;
     }
   }
 
-  function setScene(next) {
+  function startClock() {
+    stopClock();
+    if (!clockEl) return;
+    sittingStarted = true;
+    var start = Date.now();
+    var total = 30 * 60;
+    function paint(left) {
+      var m = Math.floor(left / 60);
+      var s = left % 60;
+      clockEl.textContent = m + ":" + String(s).padStart(2, "0");
+      if (barEl) barEl.style.transform = "scaleX(" + (left / total) + ")";
+    }
+    paint(total);
+    if (reduceMotion) return;
+    function tick() {
+      var elapsed = Math.floor((Date.now() - start) / 1000);
+      var left = Math.max(0, total - elapsed);
+      paint(left);
+      if (left <= 0) {
+        clockTimer = null;
+        return;
+      }
+      var drift = (Date.now() - start) % 1000;
+      clockTimer = setTimeout(tick, 1000 - drift);
+    }
+    clockTimer = setTimeout(tick, 1000);
+  }
+
+  function setScene(next, opts) {
     scene = Math.max(0, Math.min(SCENES - 1, next));
     walk.querySelectorAll("[data-scene]").forEach(function (el) {
       var on = Number(el.getAttribute("data-scene")) === scene;
@@ -159,10 +164,14 @@
     });
     if (folioEl) folioEl.textContent = FOLIO[scene] + " · " + (scene + 1) + " / " + SCENES;
     prevBtn.disabled = scene === 0;
-    nextBtn.textContent = NEXT[scene];
+    nextBtn.textContent = "Continue";
     nextBtn.hidden = scene === SCENES - 1;
-    if (scene === 0) startClock();
-    else stopClock();
+    if (scene === 0) {
+      if (opts && opts.holdClock) resetClockFace();
+      else startClock();
+    } else {
+      stopClock();
+    }
     if (scene === 1) renderQuestion();
     walk.querySelector(".walk__stage").scrollTop = 0;
   }
@@ -172,7 +181,9 @@
       clearTimeout(curtainTimer);
       curtainTimer = null;
     }
-    if (curtain) curtain.hidden = true;
+    if (!curtain) return;
+    curtain.classList.remove("is-out");
+    curtain.hidden = true;
   }
 
   function openWalk(start) {
@@ -184,16 +195,21 @@
     var begin = typeof start === "number" ? start : 0;
     hideCurtain();
     if (begin === 0 && !reduceMotion && curtain) {
+      setScene(0, { holdClock: true });
       curtain.hidden = false;
+      curtain.classList.remove("is-out");
       curtainTimer = setTimeout(function () {
-        hideCurtain();
-        setScene(0);
-        nextBtn.focus();
-      }, 1700);
+        curtain.classList.add("is-out");
+        curtainTimer = setTimeout(function () {
+          hideCurtain();
+          startClock();
+          if (!nextBtn.hidden) nextBtn.focus();
+        }, 1000);
+      }, 1600);
       return;
     }
     setScene(begin);
-    nextBtn.focus();
+    if (!nextBtn.hidden) nextBtn.focus();
   }
 
   function closeWalk() {
@@ -235,6 +251,7 @@
   });
 
   nextBtn.addEventListener("click", function () {
+    if (scene >= SCENES - 1) return;
     setScene(scene + 1);
   });
 
