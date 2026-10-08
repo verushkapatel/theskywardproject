@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="133 133 1706 1706" role="img" aria-label="The Skyward Project">
+  <circle cx="986" cy="986" r="853" fill="#0a1a3f"/>
+  <circle cx="986" cy="986" r="764" fill="none" stroke="#fff" stroke-width="44"/>
+  <g fill="#fff">
+    <path d="M709 743H865V972L800 896Q782 878 764 896L709 950Z"/>
+    <path d="M916 880H1073V987L967 1090L916 1030Z"/>
+    <path d="M1123 551H1280V782L1123 937Z"/>
+    <path d="M986 768 1001 815 1050 815 1010 844 1025 891 986 862 946 891 961 844 921 815 971 815Z"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M646 1068 781 935 967 1143 1440 672" stroke-width="34" stroke-linecap="butt"/>
+    <path d="M1354 683 1456 663 1424 765" stroke-width="28"/>
+  </g>
+  <g fill="#fff" font-family="'Playfair Display',Georgia,serif" font-weight="900">
+    <text x="711" y="1144" font-family="'Oswald','Arial Narrow',sans-serif" font-weight="300" font-size="80" letter-spacing="4">THE</text>
+    <text x="988" y="1320" text-anchor="middle" font-size="170" letter-spacing="-1">Skyward</text>
+    <text x="988" y="1477" text-anchor="middle" font-size="170" letter-spacing="-1">Project</text>
+  </g>
+</svg>

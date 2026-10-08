@@ -6,21 +6,20 @@ you can open and edit in any text editor.
 ## Files
 
 ```
-index.html          Home (masthead, thesis, city plate, three columns, core team)
-mission.html        The Mission
-finlit-index.html   The FinLit Index
-partnerships.html   Prospective partners: visualisation of the sitting, paper, letter, reading
+index.html          The whole site, one page: loader, mission, how it works,
+                    Saath, field notes, movement, team, partner form
+site.css            Styling for index.html (black and navy)
+site.js             Logo loader, demos, Verena's life, the field-notes story
+mission.html, finlit-index.html, partnerships.html, dispatches.html,
+field-notes.html, contact.html
+                    Redirects to the matching section, so old links still work
 take-the-test.html  Closed-pilot notice (old student link still works)
 test.html           The 27-question practice test (email required)
-dispatches.html     Dispatches (placeholder)
-field-notes.html    Field Notes (placeholder)
-contact.html        Contact form
-thank-you.html      Shown after the form is sent
-walk.js            Partnerships visualisation
-walk-data.js       The 27-question specimen used in that visualisation
-styles.css          All styling
-script.js           Navigation, scroll effects, contact form
-assets/             Emblem, plates, photos, favicon
+thank-you.html      Old form confirmation page
+styles.css, script.js
+                    Old styling and script, still used by the test pages
+worker.js           Cloudflare Worker: serves the files and the test submissions
+assets/             Logo (logo.svg), icons, share image (og.jpg), photos
 ```
 
 ## Reverting to the version before illustrations
